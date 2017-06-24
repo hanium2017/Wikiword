@@ -6,10 +6,16 @@
   <title>axios</title>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
-  axios({
-  url: url ,
-  headers: {"Access-Control-Allow-Origin": "*"},
-});
+    axios({
+      method: 'get',
+      url: 'https://www.naver.com',
+      responseType: 'document',
+      headers: {
+        "Access-Control-**": "*"
+      },
+    }).then(function(response) {
+      alert(response)
+    });
   </script>
 </head>
 
