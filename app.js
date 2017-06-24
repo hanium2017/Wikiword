@@ -5,6 +5,7 @@ var index = require('./routes/index');
 var ejs = require('ejs');
 var app = express();
 
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
