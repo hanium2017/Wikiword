@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>axios</title>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+</head>
+<body>
+
+  <script>
+  console.log('123123123');
+  console.log("<%= data %>");
+  var data = "<%= data %>";
+      axios({
+       method: 'get',
+       url: '/search?query='+ data
+     }).then(function(res){
+       console.log(res);
+       console.log('123');
+     }).catch(function(err){
+       console.error(err);
+     })
+  </script>
+  <!-- {data} -->
+  <h1>123123213</h1>
+  <%= data%>
+</body>
+</html>

@@ -10,9 +10,15 @@ router.get('/', function(req, res, next) {
   res.render('index.html');
 });
 
+router.get('/test',function(req,res){
+  res.render('result.html');
+});
+
 router.get('/search',function(req, res){
-  var Query = '아이유';
-  var api_url = 'https://openapi.naver.com/v1/search/news?start=2&display=100&query='
+  console.log('call search');
+  console.log(req.query.query);
+  var Query = req.query.query;
+  var api_url = 'https://openapi.naver.com/v1/search/news?start=1&display=10&query='
                 + encodeURI(Query);
   var request = require('request');
   var options = {
@@ -29,8 +35,17 @@ router.get('/search',function(req, res){
       res.status(response.statusCode).end();
       console.log('Error = '+response.statusCode);
     }
+
   });
 
-})
+});
+
+router.get('/search2',function(req,res){
+  console.log(req.query.query);
+  var query = req.query.query;
+  res.render('search.html',{data: query});
+
+
+});
 
 module.exports = router;

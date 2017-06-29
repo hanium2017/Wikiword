@@ -17,6 +17,30 @@ document.addEventListener('DOMContentLoaded',()=>{
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+
+
+   let search = document.querySelector('.input-search');
+   search.addEventListener('keyup',e=>{
+
+     if(e.keyCode===13){
+       location.replace('/search2?query='+search.value);
+       console.log(search.value);
+       axios({
+        method: 'get',
+        url: '/search?query='+search.value
+      }).then(function(res){
+        console.log(res);
+        console.log('123');
+      }).catch(function(err){
+        console.error(err);
+      })
+     }
+   });
+
+
+
+
 });
 
 
