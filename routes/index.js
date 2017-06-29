@@ -43,7 +43,7 @@ router.get('/search',function(req, res){
 router.get('/search2',function(req,res){
   console.log(req.query.query);
   var query = req.query.query;
-  res.render('search.html',{data: query});
+  res.render('result.html',{data: query});
 
 
 });

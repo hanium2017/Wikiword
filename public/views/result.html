@@ -8,6 +8,57 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
 </head>
 <body>
-  
+  <script>
+
+  console.log('123123123');
+  console.log("<%= data %>");
+  console.log(new Date().toLocaleTimeString())
+  var data = "<%= data %>";
+      axios({
+       method: 'get',
+       url: '/search?query='+ data
+     }).then(function(res){
+       var newsdiv = document.querySelector('.news-div');
+       var inputsearch = document.querySelector('.input-search');
+       inputsearch.value = data;
+       newsdiv.innerHTML = '';
+       res.data.items.forEach(item=>{
+         console.log(item);
+         console.log(newsdiv);
+
+         newsdiv.innerHTML += `<div class="news">
+                                  <a class="news-title" href="${item.link}">${item.title}</a>
+                                  <news-description>${item.description}</news-description>
+                                  <news-date>${item.pubDate}</news-date>
+                               </div>
+                              `;
+       });
+     }).catch(function(err){
+       console.error(err);
+     })
+  </script>
+
+  <div class="search-div">
+    <input type="text" class="input-search" />
+    <span></span>
+  </div>
+
+
+  <hr />
+  <div class="news-div">
+    <div class="news">
+      <news-title>
+        보령머드축제에 싸이·<b>아이유</b> 뜬다
+      </news-title>
+      <news-description>
+        이와 함께 최고의 실력과 미모까지 겸비한 '<b>아이유</b>'도 뜬다. 보령시는 올해 기업 협찬 공연으로 다음달 25일 야간에 '싸이 축하공연', 다음달 28일에는 같은 시간에 '<b>아이유</b> 축하공연'을 개최한다. 메가 히트곡...
+      </news-description>
+      <news-date>
+        2017 06 29 화요일 20:58:00
+        <!-- "Thu, 29 Jun 2017 20:58:00 +0900" -->
+      </news-date>
+    </div>
+
+  </div>
 </body>
 </html>

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    search.addEventListener('keyup',e=>{
 
      if(e.keyCode===13){
-       location.replace('/search2?query='+search.value);
+       location.href = ('/search2?query='+search.value);
        console.log(search.value);
        axios({
         method: 'get',
