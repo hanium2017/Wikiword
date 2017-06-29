@@ -5,29 +5,34 @@
   <title>axios</title>
   <link rel="stylesheet" href="/stylesheets/index.css" />
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/axios_test.js"></script>
 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
 </head>
 <body>
+
   <div class="header-div">
     <input type="checkbox" id="sign-in" />
     <label for="sign-in" class="sign-in">
       <span></span>
     </label>
+
     <label for="sign-in" class="overlay"></label>
+    <p href="" class="username" onclick="logout();"></p>
     <div class="login-div">
       <p class="login-title">Login</p>
-      <div class="oauth-button facebook">
+      <div class="oauth-button facebook" onclick="login();">
         <img src="/images/facebook-3.svg" />
         <p>
           Login with Facebook
         </p>
       </div>
-      <div class="oauth-button google">
+      <div class="oauth-button google" onclick="logout();">
         <img src="/images/google-plus.svg" />
         <p>
           Login with Google+
         </p>
       </div>
+
     </div>
   </div>
   <div class="title-div">

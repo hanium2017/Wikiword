@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "hanium 2017",
   "main": "index.js",
-  "scripts":{
-    "start" : "node app.js"
+  "scripts": {
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "body-parser": "^1.17.2",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.81.0"
   }
 }

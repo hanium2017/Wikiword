@@ -5,6 +5,9 @@
   padding: 0;
   outline: none;
   font-family: 'Open Sans', sans-serif;
+  user-select: none;
+  outline: none;
+
 }
 
 @media(max-width: 480px){
@@ -21,6 +24,7 @@ body{
   display: inline-block;
   width: 100vw;
   height: 50px;
+  text-align: right;
 }
 
 #sign-in{
@@ -73,6 +77,20 @@ body{
   display: flex;
 }
 
+.username{
+  display: inline-block;
+  text-align: right;
+  text-decoration: none;
+  margin-top: 20px;
+  margin-right: 20px;
+  color: blue;
+  cursor: pointer;
+}
+
+.invisible{
+  display: none;
+}
+
 .login-div{
   display: none;
   position: absolute;
@@ -80,7 +98,7 @@ body{
   left: 0px;
   margin: auto;
   top: 200px;
-  width: 100vw;
+  width: 96vw;
   max-width:360px;
   height: 240px;
   background-color: white;
