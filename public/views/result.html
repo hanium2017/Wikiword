@@ -5,37 +5,12 @@
   <title>axios</title>
   <link rel="stylesheet" href="/stylesheets/result.css" />
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/result.js"></script>
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
 </head>
 <body>
   <script>
-
-  console.log('123123123');
-  console.log("<%= data %>");
-  console.log(new Date().toLocaleTimeString())
   var data = "<%= data %>";
-      axios({
-       method: 'get',
-       url: '/search?query='+ data
-     }).then(function(res){
-       var newsdiv = document.querySelector('.news-div');
-       var inputsearch = document.querySelector('.input-search');
-       inputsearch.value = data;
-       newsdiv.innerHTML = '';
-       res.data.items.forEach(item=>{
-         console.log(item);
-         console.log(newsdiv);
-
-         newsdiv.innerHTML += `<div class="news">
-                                  <a class="news-title" href="${item.link}">${item.title}</a>
-                                  <news-description>${item.description}</news-description>
-                                  <news-date>${item.pubDate}</news-date>
-                               </div>
-                              `;
-       });
-     }).catch(function(err){
-       console.error(err);
-     })
   </script>
 
   <div class="search-div">
