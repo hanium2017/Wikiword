@@ -30,12 +30,14 @@ function fb_loginCheck(){
       //signin.style.display = 'none';
       signin.classList.add('invisible');
       username.innerHTML = response.name+' 님';
+       username.setAttribute('onclick','fb_logout();');
     }else{
       //signin.style.display = "inline-block";
       signin.classList.remove('invisible');
       username.innerHTML = '';
+      username.removeAttribute('onclick');
     }
-    console.log(response);
+
   });
 }
 

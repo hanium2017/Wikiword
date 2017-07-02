@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
+  <meta name="google-signin-client_id" content="여기에 구글 client 키 넣을것">
   <title>위키워드-Wikiword</title>
   <link rel="stylesheet" href="/stylesheets/index.css" />
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/facebook-oauth.js"></script>
   <script src="/javascripts/google-oauth.js"></script>
+  <script src="/javascripts/facebook-oauth.js"></script>
   <script>
-      document.addEventListener('DOMContentLoaded',()=>{
-        let search = document.querySelector('.input-search');
-        search.addEventListener('keyup',e=>{
-            if(e.keyCode===13){
-              location.href = ('/result?query='+ search.value);
-            }
-        });
-      })
-
+    document.addEventListener('DOMContentLoaded', () => {
+      let search = document.querySelector('.input-search');
+      search.addEventListener('keyup', e => {
+        if (e.keyCode === 13) {
+          location.href = ('/result?query=' + search.value);
+        }
+      });
+    })
   </script>
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
 </head>
+
 <body>
 
   <div class="header-div">
@@ -29,23 +32,25 @@
     </label>
 
     <label for="sign-in" class="overlay"></label>
-    <p href="" class="username" onclick="fb_logout();"></p>
+    <p href="" class="username" ></p>
     <div class="login-div">
       <p class="login-title">Login</p>
       <div class="oauth-button facebook" onclick="fb_login();">
         <img src="/images/facebook-3.svg" />
         <p>
-          Login with Facebook
+          Sign in with Facebook
         </p>
       </div>
 
+      <div id="google_login"></div>
 
-      <div class="oauth-button google" onclick="gl_login();">
+<!--
+      <div id="google_login" class="oauth-button google">
         <img src="/images/google-plus.svg" />
         <p>
           Login with Google+
         </p>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -58,4 +63,5 @@
   </div>
 
 </body>
+
 </html>
