@@ -1,15 +1,17 @@
+// 페이스북 oauth 설정 준비
+// DOM이 렌더링 된 후 실해됨
+document.addEventListener('DOMContentLoaded',() => {
 
-
-document.addEventListener('DOMContentLoaded',()=>{
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1974940292729310',
+      appId      : '',
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8'
     });
-    loginCheck();
+    fb_loginCheck();
   };
+
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -18,33 +20,10 @@ document.addEventListener('DOMContentLoaded',()=>{
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-
-
-   let search = document.querySelector('.input-search');
-   search.addEventListener('keyup',e=>{
-
-     if(e.keyCode===13){
-       location.href = ('/search2?query='+search.value);
-       console.log(search.value);
-       axios({
-        method: 'get',
-        url: '/search?query='+search.value
-      }).then(function(res){
-        console.log(res);
-        console.log('123');
-      }).catch(function(err){
-        console.error(err);
-      })
-     }
-   });
-
-
-
-
 });
 
-
-function loginCheck(){
+// 페이스북 로그인 체크 함수
+function fb_loginCheck(){
   let signin = document.querySelector('.sign-in');
   let username = document.querySelector('.username');
   FB.api('/me',response=>{
@@ -61,23 +40,26 @@ function loginCheck(){
   });
 }
 
-function login(){
+
+// 페이스북 로그인 함수
+function fb_login(){
   let signin = document.querySelector('#sign-in');
   FB.login(function(response) {
      console.log(response);
      if (response.status === 'connected') {
        console.log('connected !');
        signin.checked=false;
-       loginCheck();
+       fb_loginCheck();
      } else {
        console.log('Problem!!')
      }
    }, {scope: 'public_profile, email'});
 }
 
-function logout(){
+// 페이스북 로그인 아웃
+function fb_logout(){
   FB.logout(function(response){
     console.log(response);
-    loginCheck();
+    fb_loginCheck();
   });
 }
