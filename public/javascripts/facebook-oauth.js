@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded',() => {
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
 });
 
 // 페이스북 로그인 체크 함수
