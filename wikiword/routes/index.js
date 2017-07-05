@@ -11,4 +11,9 @@ router.get('/result',function(req,res){
   res.render('result.html',{data:req.query.query});
 });
 
+
+router.get('/test',function(req,res){
+  res.render('test.html');
+});
+
 module.exports = router;

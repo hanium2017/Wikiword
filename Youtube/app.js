@@ -5,6 +5,8 @@ const request = require('request');
 const CORS = require('cors')();
 const api_key = 'AIzaSyDfsE0k5ptCWltwY6jdhGbrEZsBMOS1JN0';
 
+app.use(CORS);
+
 app.use('/youtube', function(req, res, next) {
   let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet' +
   '&maxResults=5&order=viewCount&type=video&videoDefinition=high' +
