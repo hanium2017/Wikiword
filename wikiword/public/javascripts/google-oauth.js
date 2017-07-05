@@ -1,6 +1,18 @@
 // // 구글 oauth 설정 준비
 // // DOM이 렌더링 된 후 실해됨
-document.addEventListener('DOMContentLoaded', () => {});
+var googleUser = {};
+var google_oauthInit = function(client_id) {
+   gapi.load('auth2', function(){
+     // Retrieve the singleton for the GoogleAuth library and set up the client.
+     auth2 = gapi.auth2.init({
+       client_id: client_id,
+       cookiepolicy: 'single_host_origin',
+       // Request scopes in addition to 'profile' and 'email'
+       //scope: 'additional_scope'
+     });
+   });
+ };
+
 
 function gl_onSignIn(googleUser) {
   let signin = document.querySelector('#sign-in');

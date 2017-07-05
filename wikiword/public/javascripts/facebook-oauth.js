@@ -1,10 +1,9 @@
 // 페이스북 oauth 설정 준비
 // DOM이 렌더링 된 후 실해됨
 document.addEventListener('DOMContentLoaded',() => {
-
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1974940292729310',
+      appId      : app_id,
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8'
@@ -20,6 +19,11 @@ document.addEventListener('DOMContentLoaded',() => {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 });
+
+let app_id = null;
+function setAppId(id){
+    app_id = id;
+}
 
 // 페이스북 로그인 체크 함수
 function fb_loginCheck(){
