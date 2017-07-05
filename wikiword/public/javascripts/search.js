@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   var now = new Date().getTime();
   axios({
      method: 'get',
-     url: 'http://localhost:12000/news?search='+ data + '&pageNum='+ pageNum
+     url: 'http://localhost:12000/news?search='+ data + '&pageNum=1'
    }).then(function(res){
      var newsdiv = document.querySelector('.news-div');
      var inputsearch = document.querySelector('.input-search');
