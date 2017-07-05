@@ -11,9 +11,33 @@
 <body>
 
   <script> var data = "<%= data %>"; </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let search = document.querySelector('.input-search');
+      let search_icon = document.querySelector('.search_icon');
+      search.addEventListener('keyup', e => {
+        if (e.keyCode === 13) {
+          location.href = ('/result?query=' + search.value);
+        }
+      });
+      search_icon.addEventListener('click', e => {
+        console.log(e)
+        console.log(search.value)
+        if(search.value != ''){
+            location.href = ('/result?query=' + search.value);
+        }else{
+          console.log(search.value,"no")
+        }
+
+
+      })
+    })
+  </script>
   <div class="search-div">
     <input type="text" class="input-search" />
     <span></span>
+    <div class="search_icon">
+    </div>
   </div>
 
   <hr />
