@@ -1,3 +1,8 @@
+@font-face{
+  font-family: 'NanumSquare';
+  src: url(/fonts/NanumSquareR.ttf) format('truetype');
+}
+
 *{
   margin:0;
   padding:0;
@@ -6,6 +11,7 @@
 }
 body{
   background-color: #636efc;
+  font-family: NanumSquare;
 }
 
 .top_div{
@@ -22,13 +28,18 @@ body{
 .main_div{
   text-align: center;
   padding-top: 190px;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 }
 
 .main_div img{
   width: 150px;
+  height: 150px;
   padding-bottom: 5px;
+  cursor: pointer;
 }
+
+
+
 
 .main_div p{
   color: white;
@@ -41,9 +52,19 @@ body{
 }
 
 .keyboard{
-  width: 450px;
-  padding: 12px 10px;
+  /*width: 90vw;
+  max-width: 450px;*/
+  width: 0px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   font-size: 12pt;
   border-radius: 10px;
   border: none;
+  box-sizing: border-box;
+  transition: all 1s;
+}
+.long{
+  width: 450px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
