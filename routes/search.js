@@ -6,8 +6,8 @@ var request = require('request');
 router.get('/news',function(req, res){
 
   // 네이버 api
-  var CLIENT_ID = '';
-  var CLIENT_SECRET = '';
+  var CLIENT_ID = 'OtHO5WKtYeTypxuKxi7a';
+  var CLIENT_SECRET = 'Wz7sJF6cH_';
 
   var api_url = 'https://openapi.naver.com/v1/search/news?start=1&display=10&query=' + encodeURI(req.query.query);
   var options = {
