@@ -14,6 +14,52 @@ body{
   text-align: center;
   background-color: #f6f6f6;
 }
+a{
+  text-decoration: none;
+}
+.title-div, .blank_div{
+  display : inline-block;
+  text-align: center;
+  cursor :pointer;
+  width : 150px;
+}
+
+.search-div{
+  display: inline-block;
+  position: relative;
+  margin: 50px 0;
+}
+
+@media(max-width :860px)
+{
+  .title-div{
+  display: block;
+  width : 100vw;
+  margin-top: 10px;
+  }
+  .blank_div{
+  display: none;
+  }
+  .search-div{
+    margin: 10px 0px 20px 0px; /*위아래 마진만*/
+  }
+}
+
+
+.title-div *{
+  font-family: 'Spectral', serif;
+  font-size: 21pt;
+}
+h1 > red{
+  color: red;
+}
+h1 > yellow{
+  color: #fad300;
+}
+h1 > blue{
+  color: darkblue;
+}
+
 
 .header-div{
   background-color: red;
@@ -22,11 +68,7 @@ body{
 }
 
 
-.search-div{
-  display: inline-block;
-  position: relative;
-  margin: 50px 0;
-}
+
 
 .input-search{
   background-color: white;
@@ -76,7 +118,8 @@ hr{
 .news-div{
   display: inline-block;
   margin: 20px;
-  width: 800px;
+  max-width : 800px;
+  width : 90vw;
 
   background-color: red;
 }
