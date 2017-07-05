@@ -25,7 +25,8 @@ app.use('/dbpia', function(req, res) {
 
 })
 
-app.listen(11000, () => { console.log('DBpia JSON listening on port 11000!'); });
+module.exports = app;
+// app.listen(11000, () => { console.log('DBpia JSON listening on port 11000!'); });
 
 function analyzeXML(xml) {
   var json_data = [];

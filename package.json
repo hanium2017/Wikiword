@@ -1,0 +1,23 @@
+{
+  "name": "allstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanium2017/Wikiword.git"
+  },
+  "keywords": [
+    "all",
+    "start"
+  ],
+  "author": "윤태영",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanium2017/Wikiword/issues"
+  },
+  "homepage": "https://github.com/hanium2017/Wikiword#readme"
+}

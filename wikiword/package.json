@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "hanium 2017",
   "main": "index.js",
-  "scripts": {
-    "start": "node app.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yung6699/Wikiword.git"

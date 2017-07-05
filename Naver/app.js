@@ -36,6 +36,7 @@ app.get('/news', function(req, res) {
   });
 })
 
-app.listen(12000, () => {
-  console.log('Naver Open API listening on port 12000!');
-});
+module.exports = app;
+// app.listen(12000, () => {
+//   console.log('Naver Open API listening on port 12000!');
+// });
