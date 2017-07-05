@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded',()=>{
      var inputsearch = document.querySelector('.input-search');
      inputsearch.value = data;
      newsdiv.innerHTML = '';
-
+/*res 는 배열형식
+반복 돌림
+item들
+*/
+console.log(res)
      res.data.items.forEach(item=>{
        console.log(item);
        console.log(newsdiv);
