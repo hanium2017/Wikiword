@@ -19,22 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
-  (function() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() { // 요청에 대한 콜백
-      if (xhr.readyState === xhr.DONE) { // 요청이 완료되면
-        if (xhr.status === 200 || xhr.status === 201) {
-          var key_data = JSON.parse(xhr.responseText);
-          google_oauthInit(key_data.google_client_id);
-          setAppId(key_data.facebook_app_id);
-        } else {
-          console.error(xhr.responseText);
-        }
-      }
-    };
-    xhr.open('post', 'http://localhost:3000/keyset'); // 메소드와 주소 설정
-    xhr.send();
-  })();
-
+  keySetting(); //Oauth 키 세팅
+  // sessionFunction("check"); // 세션 여부 확인
 });
+
+
+function keySetting(){
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/account/setting'
+   }).then(function(res){
+     var key_data = res.data;
+     google_oauthInit(key_data.google_client_id);
+     setAppId(key_data.facebook_app_id);
+   });
+}
+
+
+function sessionFunction(action, data){
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/account/session/'+ action,
+     data : data
+   }).then(function(res){
+      console.log(res.data.result);
+   });
+}

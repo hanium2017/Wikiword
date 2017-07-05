@@ -13,7 +13,8 @@ app.use('/youtube', function(req, res, next) {
   '&q=' + encodeURI(req.query.search, "utf-8") + '&key=' + API_KEY.google_api + '&pageToken=' + req.query.pageNum;
   request(url, function(err, response, body) {
     if (!err && response.statusCode == 200) {
-      res.send(JSON.stringify(analyzeJSON(body)));
+      res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+      res.end(JSON.stringify(analyzeJSON(body)));
     }
   });
 });

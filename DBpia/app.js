@@ -16,7 +16,8 @@ app.use('/dbpia', function(req, res) {
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode == 200) {
-      res.send(JSON.stringify(analyzeXML(body)));
+      res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+      res.end(JSON.stringify(analyzeXML(body)));
     }
   });
 

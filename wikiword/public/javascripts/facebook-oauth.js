@@ -34,7 +34,9 @@ function fb_loginCheck(){
       //signin.style.display = 'none';
       signin.classList.add('invisible');
       username.innerHTML = response.name+' 님';
-       username.setAttribute('onclick','fb_logout();');
+      username.setAttribute('onclick','fb_logout();');
+      response.type = "fb";
+      sessionFunction("add", response);
     }else{
       //signin.style.display = "inline-block";
       signin.classList.remove('invisible');
@@ -50,7 +52,7 @@ function fb_loginCheck(){
 function fb_login(){
   let signin = document.querySelector('#sign-in');
   FB.login(function(response) {
-     console.log(response);
+
      if (response.status === 'connected') {
        console.log('connected !');
        signin.checked=false;
@@ -64,7 +66,7 @@ function fb_login(){
 // 페이스북 로그인 아웃
 function fb_logout(){
   FB.logout(function(response){
-    console.log(response);
+    sessionFunction("delete");
     fb_loginCheck();
   });
 }

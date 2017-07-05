@@ -16,11 +16,19 @@ var google_oauthInit = function(client_id) {
 
 function gl_onSignIn(googleUser) {
   let signin = document.querySelector('#sign-in');
-  var profile = googleUser.getBasicProfile();
-  var id_token = googleUser.getAuthResponse().id_token;
+  let profile = googleUser.getBasicProfile();
+  let id_token = googleUser.getAuthResponse().id_token;
+  let name = profile.getName();
 
-   signin.checked=false;
-   gl_loginCheck(id_token, profile.getName());
+  signin.checked=false;
+  var object = {
+    type: "gl",
+    id: id_token,
+    name: name
+  };
+
+   sessionFunction('add', object);
+   gl_loginCheck(id_token, name);
 
 
    // console.log("ID Token: " + id_token);
@@ -35,7 +43,8 @@ function gl_onSignIn(googleUser) {
 function gl_signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function() {
-    console.log('User signed out.');
+     console.log('User signed out.');
+     sessionFunction("delete")
      gl_loginCheck(null, '')
   });
 }
@@ -48,7 +57,6 @@ function gl_loginCheck(id_token, name){
      signin.classList.add('invisible');
      username.innerHTML = name +' 님';
      username.setAttribute('onclick','gl_signOut();');
-
    } else{
      signin.classList.remove('invisible');
      username.innerHTML = name;
