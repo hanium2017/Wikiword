@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 item들
 */
 console.log(res)
-     res.data.items.forEach(item=>{
+     res.data.forEach(item=>{
        console.log(item);
        console.log(newsdiv);
 

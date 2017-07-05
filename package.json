@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/hanium2017/Wikiword/issues"
   },
-  "homepage": "https://github.com/hanium2017/Wikiword#readme"
+  "homepage": "https://github.com/hanium2017/Wikiword#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "xml2js": "^0.4.17"
+  }
 }
