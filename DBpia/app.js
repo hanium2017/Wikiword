@@ -10,9 +10,6 @@ app.use(CORS);
 app.use(bodyParser.urlencoded({extended:false}))
 app.use('/dbpia', function(req, res) {
 
-  // req.body.searchWord  -> 검색어
-  // req.body.pagenumber  -> 더보기 누를때 마다 페이지 하나씩 올라감
-
   let url = 'http://api.dbpia.co.kr/v1/search/search.xml?target=se&key=' +
              API_KEY.dbpia_api + '&sorttype=2&sortorder=desc&pagecount=5&pyear=1&searchall='
              + encodeURI(req.query.search) + '&pagenumber=' + req.query.pageNum;
@@ -26,7 +23,6 @@ app.use('/dbpia', function(req, res) {
 })
 
 module.exports = app;
-// app.listen(11000, () => { console.log('DBpia JSON listening on port 11000!'); });
 
 function analyzeXML(xml) {
   var json_data = [];

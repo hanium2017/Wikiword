@@ -41,7 +41,6 @@ function analyzeJSON(body){
 }
 
 module.exports = app;
-// app.listen(13000, () => { console.log('Youtube JSON listening on port 13000!'); });
 
 
 //실제 영상링크 걸기 -> https://www.youtube.com/watch?v=' + video_id
