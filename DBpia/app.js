@@ -4,7 +4,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const CORS = require('cors')();
 const app = express();
-const api_key = '4c7de81329d8a421ad409c22fa13950d';
+const API_KEY = require('../common/key');
 
 app.use(CORS);
 app.use(bodyParser.urlencoded({extended:false}))
@@ -14,7 +14,7 @@ app.use('/dbpia', function(req, res) {
   // req.body.pagenumber  -> 더보기 누를때 마다 페이지 하나씩 올라감
 
   let url = 'http://api.dbpia.co.kr/v1/search/search.xml?target=se&key=' +
-             api_key + '&sorttype=2&sortorder=desc&pagecount=5&pyear=1&searchall='
+             API_KEY.dbpia_api + '&sorttype=2&sortorder=desc&pagecount=5&pyear=1&searchall='
              + encodeURI(req.query.search) + '&pagenumber=' + req.query.pageNum;
 
   request(url, function(err, response, body) {

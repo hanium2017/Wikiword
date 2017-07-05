@@ -3,14 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 const CORS = require('cors')();
-const api_key = 'AIzaSyDfsE0k5ptCWltwY6jdhGbrEZsBMOS1JN0';
+const API_KEY = require('../common/key');
 
 app.use(CORS);
 
 app.use('/youtube', function(req, res, next) {
   let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet' +
   '&maxResults=5&order=viewCount&type=video&videoDefinition=high' +
-  '&q=' + encodeURI(req.query.search, "utf-8") + '&key=' + api_key + '&pageToken=' + req.query.pageNum;
+  '&q=' + encodeURI(req.query.search, "utf-8") + '&key=' + API_KEY.google_api + '&pageToken=' + req.query.pageNum;
   request(url, function(err, response, body) {
     if (!err && response.statusCode == 200) {
       res.send(JSON.stringify(analyzeJSON(body)));

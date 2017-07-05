@@ -3,12 +3,13 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const CORS = require('cors')();
 const app = express();
+const API_KEY = require('../common/key');
 
 var options = {
   url: null,
   headers: {
-    'X-naver-Client-Id': 'OtHO5WKtYeTypxuKxi7a',
-    'X-naver-Client-Secret': 'Wz7sJF6cH_'
+    'X-naver-Client-Id': API_KEY.naver_client_id,
+    'X-naver-Client-Secret': API_KEY.naver_sercret
   }
 };
 
