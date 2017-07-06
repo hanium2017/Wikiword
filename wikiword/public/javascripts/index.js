@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   keySetting(); //Oauth 키 세팅
-  // sessionFunction("check"); // 세션 여부 확인
+  sessionFunction("check");
 });
 
 
@@ -39,9 +39,10 @@ function keySetting(){
 function sessionFunction(action, data){
   axios({
      method: 'post',
-     url: 'http://localhost:3000/account/session/'+ action,
+     url: 'http://localhost:3000/account/session/'+action,
      data : data
    }).then(function(res){
-      console.log(res.data.result);
+      var message = res.data.message;
+      console.log(message);
    });
 }

@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 let app_id = null;
 function setAppId(id){
+    console.log("id : " + id)
     app_id = id;
 }
 
@@ -36,7 +37,8 @@ function fb_loginCheck(){
       username.innerHTML = response.name+' 님';
       username.setAttribute('onclick','fb_logout();');
       response.type = "fb";
-      sessionFunction("add", response);
+      sessionFunction("create", response);
+      // setTimeout(function(){ sessionFunction("check"); }, 200);
     }else{
       //signin.style.display = "inline-block";
       signin.classList.remove('invisible');
@@ -67,6 +69,7 @@ function fb_login(){
 function fb_logout(){
   FB.logout(function(response){
     sessionFunction("delete");
+    // setTimeout(function(){ sessionFunction("check"); }, 200);
     fb_loginCheck();
   });
 }

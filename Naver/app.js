@@ -9,7 +9,7 @@ var options = {
   url: null,
   headers: {
     'X-naver-Client-Id': API_KEY.naver_client_id,
-    'X-naver-Client-Secret': API_KEY.naver_sercret
+    'X-naver-Client-Secret': API_KEY.naver_secret
   }
 };
 

@@ -8,7 +8,7 @@ var google_oauthInit = function(client_id) {
        client_id: client_id,
        cookiepolicy: 'single_host_origin',
        // Request scopes in addition to 'profile' and 'email'
-       //scope: 'additional_scope'
+       scope: 'profile'
      });
    });
  };
@@ -27,9 +27,10 @@ function gl_onSignIn(googleUser) {
     name: name
   };
 
-   sessionFunction('add', object);
-   gl_loginCheck(id_token, name);
 
+   gl_loginCheck(id_token, name);
+   sessionFunction("create", object);
+  //  setTimeout(function(){ sessionFunction("check"); }, 300);
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -45,6 +46,7 @@ function gl_signOut() {
   auth2.signOut().then(function() {
      console.log('User signed out.');
      sessionFunction("delete")
+      // etTimeout(function(){ sessionFunction("check"); }, 300);
      gl_loginCheck(null, '')
   });
 }
