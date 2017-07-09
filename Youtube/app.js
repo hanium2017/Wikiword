@@ -41,7 +41,7 @@ function analyzeJSON(body){
   return json_data;
 }
 
-module.exports = app;
+exports.app = app;
 
 
 //실제 영상링크 걸기 -> https://www.youtube.com/watch?v=' + video_id

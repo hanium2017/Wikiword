@@ -54,7 +54,6 @@ function fb_loginCheck(){
 function fb_login(){
   let signin = document.querySelector('#sign-in');
   FB.login(function(response) {
-
      if (response.status === 'connected') {
        console.log('connected !');
        signin.checked=false;

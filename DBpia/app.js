@@ -23,7 +23,7 @@ app.use('/dbpia', function(req, res) {
 
 })
 
-module.exports = app;
+exports.app = app;
 
 function analyzeXML(xml) {
   var json_data = [];

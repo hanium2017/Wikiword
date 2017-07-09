@@ -28,4 +28,4 @@ app.use(session({
 app.use('/', index);
 app.use('/account', account);
 
-module.exports = app;
+exports.app = app;

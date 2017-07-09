@@ -1,23 +1,18 @@
 const express = require('express');
 const API_KEY = require('../../common/key');
-const fs = require('fs');
 const router = express.Router();
-let session = null;
+
 /* 키값을 브라우저에 표시하지 않기 위해 서버에서 json 파일을 읽어 제공한다.*/
 router.post('/setting', function(req, res, next) {
-  fs.readFile("./common/key.json","utf8", function(err, data){
-      if (err) throw err;
-      var temp = JSON.parse(data);
-      res.send(JSON.stringify(
-          {'google_client_id': temp.google_client_id,
-           'facebook_app_id' : temp.facebook_app_id }
-      ));
-  });
+    res.send(JSON.stringify(
+        {'google_client_id': API_KEY.google_client_id,
+         'facebook_app_id' : API_KEY.facebook_app_id }
+    ));
 });
 
 // 세션을 생성
 router.post('/session/create', function(req, res) {
-  var session = req.session;
+  let session = req.session;
   session.tokenId = req.body.id;
   session.type = req.body.type; // 페이스북인지 구글인지
   session.userName = req.body.name;
@@ -31,7 +26,7 @@ router.post('/session/delete', function(req, res){
 });
 
 
-// 세션 값 체크
+// 세션 값 체크 및 가져오기
 router.post('/session/check', function(req, res){
     if(!req.session.tokenId){
       res.send(JSON.stringify({ message : "not session"}));

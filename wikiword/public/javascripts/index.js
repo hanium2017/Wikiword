@@ -30,6 +30,7 @@ function keySetting(){
      url: 'http://localhost:3000/account/setting'
    }).then(function(res){
      var key_data = res.data;
+     console.log(key_data);
      google_oauthInit(key_data.google_client_id);
      setAppId(key_data.facebook_app_id);
    });

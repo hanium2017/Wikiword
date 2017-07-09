@@ -50,4 +50,4 @@ function analyzeJSON(body, type){
   return JSON.stringify(JSONArray);
 }
 
-module.exports = app;
+exports.app = app;
