@@ -4,7 +4,8 @@
   "description": "youtube open data read",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ../common/lib/start.js"
   },
   "author": "윤태영",
   "license": "ISC"

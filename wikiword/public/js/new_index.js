@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded',function(){
     }else{
       keyboard.classList.add('long');
     }
-
   });
+
+
   document.addEventListener('keydown',function(e){
     console.log(e);
     if(keyboard.classList.contains('long')){
@@ -25,11 +26,22 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
-  keySetting(); //Oauth 키 세팅
-  sessionFunction("check");
+  // keySetting(); //Oauth 키 세팅
+  // sessionFunction("check");
 });
 
 
+function keySetting(){
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/account/setting'
+   }).then(function(res){
+     var key_data = res.data;
+     console.log(key_data);
+     google_oauthInit(key_data.google_client_id);
+     setAppId(key_data.facebook_app_id);
+   });
+}
 
 
 function sessionFunction(action, data){

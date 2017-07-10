@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/yung6699/Wikiword.git"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ../common/lib/start.js"
+  },
   "author": "yoon",
   "license": "ISC",
   "bugs": {

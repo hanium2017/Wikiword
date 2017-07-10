@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./common/start.js"
+    "start": "node ./common/lib/start.js"
   },
   "repository": {
     "type": "git",
