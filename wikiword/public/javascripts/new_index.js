@@ -18,4 +18,27 @@ document.addEventListener('DOMContentLoaded',function(){
       keyboard.classList.add('long');
     }
   });
+
+  keyboard.addEventListener('keyup', e => {
+    if (e.keyCode === 13) {
+      location.href = ('/result?query=' + keyboard.value);
+    }
+  });
+
+  keySetting(); //Oauth 키 세팅
+  sessionFunction("check");
 });
+
+
+
+
+function sessionFunction(action, data){
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/account/session/'+action,
+     data : data
+   }).then(function(res){
+      var message = res.data.message;
+      console.log(message);
+   });
+}
