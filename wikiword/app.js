@@ -12,10 +12,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
-
 app.use(cookieParser());
+
 app.use(session({
   key: 'sid', // 세션키
   secret: 'secret', // 비밀키

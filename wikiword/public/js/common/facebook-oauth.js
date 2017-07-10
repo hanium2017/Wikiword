@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded',() => {
    }(document, 'script', 'facebook-jssdk'));
 });
 
+
+////////////////////////////////////////////////////////////////////////////////
+
 let app_id = null;
 function setAppId(id){
     console.log("id : " + id)
@@ -38,8 +41,8 @@ function fb_loginCheck(){
       username.innerHTML = response.name+' 님';
       username.setAttribute('onclick','fb_logout();');
       response.type = "fb";
-      sessionFunction("create", response);
-      // setTimeout(function(){ sessionFunction("check"); }, 200);
+      sessionEvent("create", response);
+      // setTimeout(function(){ sessionEvent("check"); }, 200);
     }else{
       //signin.style.display = "inline-block";
       signin.classList.remove('invisible');
@@ -49,7 +52,6 @@ function fb_loginCheck(){
 
   });
 }
-
 
 // 페이스북 로그인 함수
 function fb_login(){
@@ -68,8 +70,8 @@ function fb_login(){
 // 페이스북 로그인 아웃
 function fb_logout(){
   FB.logout(function(response){
-    sessionFunction("delete");
-    // setTimeout(function(){ sessionFunction("check"); }, 200);
+    sessionEvent("delete");
+    // setTimeout(function(){ sessionEvent("check"); }, 200);
     fb_loginCheck();
   });
 }

@@ -29,8 +29,7 @@ function gl_onSignIn(googleUser) {
 
 
    gl_loginCheck(id_token, name);
-   sessionFunction("create", object);
-  //  setTimeout(function(){ sessionFunction("check"); }, 300);
+   sessionEvent("create", object);
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -45,8 +44,7 @@ function gl_signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function() {
      console.log('User signed out.');
-     sessionFunction("delete")
-      // etTimeout(function(){ sessionFunction("check"); }, 300);
+     sessionEvent("delete")
      gl_loginCheck(null, '')
   });
 }
@@ -66,12 +64,6 @@ function gl_loginCheck(id_token, name){
    }
 }
 
-
-function onFailure(error) {
-  console.log(error);
-}
-
-
 function renderButton() {
   gapi.signin2.render('google_login', {
     'scope': 'profile email',
@@ -82,4 +74,8 @@ function renderButton() {
     'onsuccess': gl_onSignIn,
     'onfailure': onFailure
   });
+}
+
+function onFailure(error) {
+  console.log(error);
 }
