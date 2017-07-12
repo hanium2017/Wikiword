@@ -3,15 +3,15 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const account = require('./routes/account');
-const ejs = require('ejs');
+const swig = require('swig');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
-app.set('view engine', 'ejs');
-app.engine('html', ejs.renderFile);
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))

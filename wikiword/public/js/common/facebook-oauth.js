@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded',() => {
 ////////////////////////////////////////////////////////////////////////////////
 
 let app_id = null;
-function setAppId(id){
+function facebook_setAppId(id){
     console.log("id : " + id)
     app_id = id;
 }

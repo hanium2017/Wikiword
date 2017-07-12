@@ -14,7 +14,7 @@ router.get('/new_index', function(req, res, next) {
 
 /* 검색 결과 페이지 */
 router.get('/result',function(req,res){
-  res.render('result.html',{data:req.query.query});
+  res.render('result.html',{ data : req.query.query });
 });
 
 
