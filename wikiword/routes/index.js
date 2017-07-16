@@ -7,10 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/new_index', function(req, res, next) {
-  res.render('new_index.html');
-});
-
+// router.get('/delete_index', function(req, res, next) {
+//   res.render('delete_index.html');
+// });
+//
 
 /* 검색 결과 페이지 */
 router.get('/result',function(req,res){

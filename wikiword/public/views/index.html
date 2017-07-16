@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>위키워드-Wikiword</title>
-  <link rel="stylesheet" href="/stylesheets/index.css" />
-  {% include "./common/head.html" %}
-  <script src="/js/index.js"></script>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
-</head>
+  <head>
+    <title> 위키워드  </title>
+    <link rel="stylesheet" href="/stylesheets/index.css "/>
+    {% include "./common/head.html" %}
+    <script src="/js/index.js"></script>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+  </head>
+  <body>
 
-<body>
-  <img src="/images/main_logo.svg"/>
-  <div class="header-div">
-    <input type="checkbox" id="sign-in" />
-    <label for="sign-in" class="sign-in">
-      <span></span>
-    </label>
+    <div class="header-div">
+      <input type="checkbox" id="sign-in" />
+      <label for="sign-in" class="sign-in">
+        <span></span>
+      </label>
 
-    <label for="sign-in" class="overlay"></label>
-    <p href="" class="username" ></p>
-    <div class="login-div">
-      <p class="login-title">Login</p>
-      <div class="oauth-button facebook" onclick="fb_login();">
-        <img src="/images/facebook-3.svg" />
-        <p>
-          Sign in with Facebook
-        </p>
-      </div>
+      <label for="sign-in" class="overlay"></label>
+      <p href="" class="username" ></p>
+      <div class="login-div">
+        <p class="login-title">Login</p>
+        <div class="oauth-button facebook" onclick="fb_login();">
+          <img src="/images/facebook-3.svg" />
+          <p>
+            Sign in with Facebook
+          </p>
+        </div>
 
-      <div id="google_login"></div>
-
-
+        <div id="google_login"></div>
 
 <!--
-      <div id="google_login" class="oauth-button google">
-        <img src="/images/google-plus.svg" />
-        <p>
-          Login with Google+
-        </p>
-      </div> -->
+        <div id="google_login" class="oauth-button google">
+          <img src="/images/google-plus.svg" />
+          <p>
+            Login with Google+
+          </p>
+        </div> -->
 
+      </div>
     </div>
-  </div>
-  <div class="title-div">
-    <h1><red>Wi</red><yellow>ki</yellow><blue>word</blue></h1>
-  </div>
-  <div class="search-div">
-    <input type="text" class="input-search" />
-    <span>
 
-    </span>
-    <div class="search_icon" >
+    <div class="main_div">
+      <img src="/images/main_logo.svg"/>
+      <p>위키워드</p>
     </div>
-  </div>
-  <script></script>
-</body>
 
+    <div class="search_div">
+      <input type="text" class="keyboard"/>
+    </div>
+  </body>
 </html>
