@@ -26,10 +26,10 @@ function gl_onSignIn(googleUser) {
     id: id_token,
     name: name
   };
-
-
-   gl_loginCheck(id_token, name);
+  
+   console.log('connected !');
    sessionEvent("create", object);
+   gl_loginCheck(id_token, name);
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!

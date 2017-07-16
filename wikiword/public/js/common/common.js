@@ -2,7 +2,7 @@
 function keySetting(){
   axios({
      method: 'post',
-     url: 'http://localhost:3000/account/setting'
+     url: 'http://localhost:3000/setting'
    }).then(function(res){
      var key_data = res.data;
      console.log(key_data);
@@ -16,7 +16,7 @@ function keySetting(){
 function sessionEvent(action, data){
   axios({
      method: 'post',
-     url: 'http://localhost:3000/account/session/'+action,
+     url: 'http://localhost:3000/session/'+action,
      data : data
    }).then(function(res){
       var message = res.data.message;

@@ -42,7 +42,6 @@ function fb_loginCheck(){
       username.setAttribute('onclick','fb_logout();');
       response.type = "fb";
       sessionEvent("create", response);
-      // setTimeout(function(){ sessionEvent("check"); }, 200);
     }else{
       //signin.style.display = "inline-block";
       signin.classList.remove('invisible');
@@ -70,8 +69,8 @@ function fb_login(){
 // 페이스북 로그인 아웃
 function fb_logout(){
   FB.logout(function(response){
+    console.log('User signed out.');
     sessionEvent("delete");
-    // setTimeout(function(){ sessionEvent("check"); }, 200);
     fb_loginCheck();
   });
 }

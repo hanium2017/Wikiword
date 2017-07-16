@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
-const account = require('./routes/account');
+const account = require('./routes/session');
 const swig = require('swig');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -25,8 +25,7 @@ app.use(session({
   }
 }));
 
-
 app.use('/', index);
-app.use('/account', account);
+app.use('/session', account);
 
 exports.app = app;

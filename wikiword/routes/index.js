@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const API_KEY = require('../../common/key');
 
 /* wikiword main page. */
 router.get('/', function(req, res, next) {
@@ -7,19 +8,18 @@ router.get('/', function(req, res, next) {
 });
 
 
-// router.get('/delete_index', function(req, res, next) {
-//   res.render('delete_index.html');
-// });
-//
-
 /* 검색 결과 페이지 */
 router.get('/result',function(req,res){
   res.render('result.html',{ data : req.query.query });
 });
 
 
-router.get('/test',function(req,res){
-  res.render('test.html');
+/* 키값을 브라우저에 표시하지 않기 위해 서버에서 json 파일을 읽어 제공한다.*/
+router.post('/setting', function(req, res, next) {
+    res.send(JSON.stringify(
+        {'google_client_id': API_KEY.google_client_id,
+         'facebook_app_id' : API_KEY.facebook_app_id }
+    ));
 });
 
 
