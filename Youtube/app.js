@@ -7,11 +7,12 @@ const API_KEY = require('../common/key');
 
 app.use(CORS);
 
-app.use('/youtube', function(req, res, next) {
+app.get('/youtube', function(req, res, next) {
   let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet' +
   '&maxResults=5&order=viewCount&type=video&videoDefinition=high' +
   '&q=' + encodeURI(req.query.search, "utf-8") + '&key=' + API_KEY.google_api + '&pageToken=' + req.query.pageNum;
   request(url, function(err, response, body) {
+
     if (!err && response.statusCode == 200) {
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(JSON.stringify(analyzeJSON(body)));
@@ -24,20 +25,23 @@ function analyzeJSON(body){
 
   var analyze_json = JSON.parse(body);
   var json_data= {}, json_items =[];
-
-  json_data.nextPageToken = analyze_json.nextPageToken;
-
-  var items = analyze_json.items;
-  for(var index in items){
-    var item = items[index];
-    var object = {};
-    object.video_id = item.id.videoId;
-    object.title = item.snippet.title;
-    object.thumbnail = item.snippet.thumbnails.medium.url;
-    json_items.push(object);
+  if(analyze_json.items.length === 0){
+    json_items.push({"message":"찾을려는 자료가 없습니다."});
+  } else {
+    json_data.nextPageToken = analyze_json.nextPageToken;
+    var items = analyze_json.items;
+    for(var index in items){
+      var item = items[index];
+      var object = {};
+      object.video_id = item.id.videoId;
+      object.title = item.snippet.title;
+      object.pubdate =  item.snippet.publishedAt;
+      object.thumbnail = item.snippet.thumbnails.medium.url;
+      json_items.push(object);
+    }
   }
-
-  json_data.items = json_items;
+  
+  json_data.items = json_items
   return json_data;
 }
 
