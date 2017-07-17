@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getJSONData({port: 16000, type:'dbpia',pageNum:1}, (item) => {
    return `<div class="dbpia"><a class="dbpia-title" href="${item.link_url}">${item.title}</a>
            <dbpia-pages>${item.pages}</dbpia-pages>
-           <dbpia-date>${newDateForm(now - new Date(item.pubDate).getTime())}</dbpia-date></div>`;
+           <dbpia-date>${item.pubDate}</dbpia-date></div>`;
   });
 
 })
