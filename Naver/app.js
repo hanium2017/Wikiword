@@ -3,6 +3,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const CORS = require('cors')();
 const app = express();
+const naver = require('./naver');
 const API_KEY = require('../common/key');
 
 var options = {
@@ -25,10 +26,9 @@ app.get('/:type', function(req, res) {
 
   options.url = url;
   request.get(options, function(error, response, body) {
-
     if (!error && response.statusCode == 200) {
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-      res.end(analyzeJSON(body, type));
+      res.end(naver.analyzeJSON(body, type));
 
     } else {
       res.status(response.statusCode).end();
@@ -38,21 +38,6 @@ app.get('/:type', function(req, res) {
 })
 
 
-function analyzeJSON(body, type){
-  const JSONArray = [];
-  let items = JSON.parse(body).items;
 
-  if(items.length === 0){
-    JSONArray.push({"message":"찾을려는 자료가 없습니다."});
-  } else {
-    let deleteAttribute = (( type == 'news') ? 'originallink' : 'isbn');
-    for(var i = 0, max = items.length; i < max; i++){
-      let JSONObject = items[i];
-      delete JSONObject[deleteAttribute];
-      JSONArray.push(JSONObject);
-    }
-  }
-  return JSON.stringify(JSONArray);
-}
 
 exports.app = app;

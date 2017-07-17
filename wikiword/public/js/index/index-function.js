@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+function eventSetting(){
   let logo = document.querySelector('.main_div img');
   let keyboard = document.querySelector('.keyboard');
   logo.addEventListener('click', e => {
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-
   // search_icon.addEventListener('click', e => {
   //   console.log(e)
   //   console.log(search.value)
@@ -30,7 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
   //     console.log(search.value, "no")
   //   }
   // });
+}
 
-  keySetting(); //Oauth 키 세팅
-  sessionEvent("check");
-});
+
+// 로그인시 키 세팅 함수
+function keySetting(){
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/setting'
+   }).then(function(res){
+     var key_data = res.data;
+     console.log(key_data);
+     google_oauthInit(key_data.google_client_id);
+     facebook_setAppId(key_data.facebook_app_id);
+   });
+}

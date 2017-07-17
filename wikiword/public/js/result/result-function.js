@@ -21,7 +21,8 @@ function getDataRendering(object, predicate) {
 function rendering(object, predicate) {
 
   var element = document.querySelector('.' + object.type + '-div');
-  var items = ( object.type === "youtube")? object.json.items : object.json; // youtube는 예외 상황이 있다.
+  var items = object.json;
+
   element.innerHTML = '';
 
   if(items[0].hasOwnProperty('message')) {
@@ -31,7 +32,7 @@ function rendering(object, predicate) {
       element.innerHTML += predicate(item);
     });
   }
-
+  
 }
 
 /*
