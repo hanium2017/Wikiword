@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   getJSONData({port: 14000, type:'twitter'}, (item) => {
-      return `<div class="twitter"><img src="${item.profile_image_url}"/>
+      return `<div class="twitter"><a href='${item.url}'><img src="${item.profile_image_url}"/>
               <twitter-text>${item.text}</twitter-text>
               <twitter-name>${item.name}</twitter-name>
-              <twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date></div>`;
+              <twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date></a></div>`;
   });
 
 

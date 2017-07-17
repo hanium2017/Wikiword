@@ -28,8 +28,10 @@ app.get('/twitter', function(req, res) {
         for(var index = 0, max = 7; index < max; index++){
           var object = {};
           var item = items[index];
+
           object.pubDate = item.created_at
           object.text = item.text;
+          object.url = (item.entities.hasOwnProperty('media'))? item.entities.media[0].url : '# onclick=return false'
           object.name = item.user.name;
           object.profile_image_url =  item.user.profile_image_url
           json_items.push(object);
