@@ -14,7 +14,6 @@ function getDataRendering(object, predicate) {
 }
 
 
-
 /*
   실제 렌더링 함수
  */
@@ -32,26 +31,9 @@ function rendering(object, predicate) {
       element.innerHTML += predicate(item);
     });
   }
-  
+
 }
 
-/*
-  기사 올라온 시간 구하는 함수
- */
-function newDateForm(d) {
-  let tmp = Math.floor(d / 1000);
-  if (tmp < 60) {
-    return tmp + '초 전';
-  } else if (tmp < 60 * 60) {
-    return Math.floor(tmp / 60) + '분 전';
-  } else if (tmp < 60 * 60 * 24) {
-    return Math.floor(tmp / (60 * 60)) + '시간 전';
-  } else if (tmp < 60 * 60 * 24 * 365) {
-    return Math.floor(tmp / (60 * 60 * 24)) + '일 전';
-  } else {
-    return Math.floor(tmp / (60 * 60 * 24 * 365)) + '년 전';
-  }
-}
 
 /*
    이벤트 세팅 함수

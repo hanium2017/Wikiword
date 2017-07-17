@@ -3,7 +3,7 @@ exports.analyzeJSON = function (body, type){
   let items = JSON.parse(body).items;
 
   if(items.length === 0){
-    JSONArray.push({"message":"찾을려는 자료가 없습니다."});
+    JSONArray.push({"message":"검색 된 자료가 없습니다."});
   } else {
     let deleteAttribute = (( type == 'news') ? 'originallink' : 'isbn');
     for(var i = 0, max = items.length; i < max; i++){

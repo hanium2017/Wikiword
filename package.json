@@ -27,9 +27,12 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "mysql": "^2.13.0",
+    "node-twitter": "^0.5.3",
+    "oauth": "^0.9.15",
     "path": "^0.12.7",
     "request": "^2.81.0",
     "swig": "^1.4.2",
+    "wikiword": "file:twitter",
     "xml2js": "^0.4.17"
   }
 }
