@@ -44,7 +44,7 @@ function eventSetting() {
   search.value = data;
 
   document.querySelector('.title-div').addEventListener('click', e => {
-    location.href = ('/')
+    location.href = ('/');
   });
 
   document.querySelector('.search_icon').addEventListener('click', e => {
@@ -53,7 +53,7 @@ function eventSetting() {
     if (search.value != '') {
       location.href = ('/result?query=' + search.value);
     } else {
-      console.log(search.value, "no")
+      console.log(search.value, "no");
     }
   });
 

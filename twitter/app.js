@@ -29,11 +29,11 @@ app.get('/twitter', function(req, res) {
           var object = {};
           var item = items[index];
 
-          object.pubDate = item.created_at
+          object.pubDate = item.created_at;
           object.text = item.text;
-          object.url = (item.entities.hasOwnProperty('media'))? item.entities.media[0].url : '# onclick=return false'
+          object.url = (item.entities.hasOwnProperty('media'))? item.entities.media[0].url : '# onclick=return false';
           object.name = item.user.name;
-          object.profile_image_url =  item.user.profile_image_url
+          object.profile_image_url = item.user.profile_image_url;
           json_items.push(object);
         }
       }

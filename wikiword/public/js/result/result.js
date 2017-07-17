@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <youtube-date>${newDateForm(now - new Date(item.pubDate).getTime())}</youtube-date></div>`;
   });
 
-  getJSONData({port: 14000, type:'twitter'}, (item) => {
+  getJSONData({port: 14000, type:'twitter',pageNum:''}, (item) => {
       return `<div class="twitter"><a href='${item.url}'><img src="${item.profile_image_url}"/>
               <twitter-text>${item.text}</twitter-text>
               <twitter-name>${item.name}</twitter-name>
