@@ -4,7 +4,7 @@
   "description": "크롤러",
   "main": "app.js",
   "scripts": {
-    "start": "node ./common/start.js"
+    "start": "nodemon ./common/start.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "node-twitter": "^0.5.3",
+    "nodemon": "^1.11.0",
     "oauth": "^0.9.15",
     "path": "^0.12.7",
     "request": "^2.81.0",
