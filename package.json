@@ -4,7 +4,7 @@
   "description": "크롤러",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./common/start.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

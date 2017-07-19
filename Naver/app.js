@@ -38,6 +38,4 @@ app.get('/:type', function(req, res) {
 })
 
 
-
-
 exports.app = app;

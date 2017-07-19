@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ../common/start.js"
+    "start": "nodemon ../index.js"
   },
   "author": "yoon",
   "license": "ISC",
