@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   eventSetting();
 
+  getJSONData({port: 11000, type: 'wikipedia',pageNum:''}, (item) => {
+    return `<div class="wikipedia">
+  <wikipedia-description><p>${item.content}</p></wikipedia-description></div>`;
+  });
+
+
   getJSONData({port: 12000, type: 'news',pageNum:1}, (item) => {
     return `<div class="news"><a class="news-title" href="${item.link}">${item.title}</a>
                      <news-description>${item.description}</news-description>
@@ -16,14 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <book-date>${item.pubdate.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3").replace(/-/g, "-")}</book-date></div>`;
   });
 
+  getJSONData({port: 13000, type:'pinterest',pageNum:''}, (item) => {
+    return `<a href="${item.image_url}"><img src="${item.image_url}"/></a>`;
+  });
 
-  getJSONData({port: 13000, type:'youtube',pageNum:''}, (item) => {
+
+  getJSONData({port: 14000, type:'youtube',pageNum:''}, (item) => {
     return `<div class="youtube"><a class="youtube-title" href='https://www.youtube.com/watch?v=${item.video_id}'>
             <img src="${item.thumbnail}"/><youtube-title>${item.title}</youtube-title></a>
             <youtube-date>${newDateForm(now - new Date(item.pubDate).getTime())}</youtube-date></div>`;
   });
 
-  getJSONData({port: 14000, type:'twitter',pageNum:''}, (item) => {
+  getJSONData({port: 15000, type:'twitter',pageNum:''}, (item) => {
       return `<div class="twitter"><a href='${item.url}'><img src="${item.profile_image_url}"/>
               <twitter-text>${item.text}</twitter-text>
               <twitter-name>${item.name}</twitter-name>

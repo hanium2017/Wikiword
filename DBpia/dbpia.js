@@ -10,8 +10,8 @@ exports.analyzeXML = function (xml) {
         var item = items[index];
         var object = {};
         object.title = item.title[0].replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
-        // object.authors = item.authors;
-        object.pages = item.pages[0];
+        object.authors = item.authors;
+        object.pages = (item.hasOwnProperty('page'))? item.pages[0] : '';
         object.pubDate = (item.issue[0].hasOwnProperty('yymm'))? item.issue[0].yymm[0] : '';
         object.link_url = item.link_url;
         object.publisher = item.publisher;

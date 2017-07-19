@@ -1,0 +1,12 @@
+{
+  "name": "pinterest",
+  "version": "1.0.0",
+  "description": "핀터레스트 크롤러",
+  "main": "pinterest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ../common/start.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -24,9 +24,14 @@ function rendering(object, predicate) {
 
   element.innerHTML = '';
 
+  // 어예 데이터 없을시 처리
   if(items[0].hasOwnProperty('message')) {
-    element.innerHTML = items[0].message;
-  } else {
+    element.innerHTML = '<h1>'+items[0].message+'</h1>';
+  }
+//   else if(object.type == 'wikipedia'){
+//       // (items.length > 1)? predicate(item, str1) : predicate(item, str2);
+// }
+else {
     items.forEach(item => {
       element.innerHTML += predicate(item);
     });

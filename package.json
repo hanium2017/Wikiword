@@ -1,7 +1,7 @@
 {
-  "name": "allstart",
+  "name": "pinterest",
   "version": "1.0.0",
-  "description": "",
+  "description": "크롤러",
   "main": "app.js",
   "scripts": {
     "start": "node ./common/start.js"
@@ -22,10 +22,12 @@
   "homepage": "https://github.com/hanium2017/Wikiword#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cheerio-httpcli": "^0.7.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "node-twitter": "^0.5.3",
     "oauth": "^0.9.15",
@@ -34,5 +36,6 @@
     "swig": "^1.4.2",
     "wikiword": "file:twitter",
     "xml2js": "^0.4.17"
-  }
+  },
+  "devDependencies": {}
 }
