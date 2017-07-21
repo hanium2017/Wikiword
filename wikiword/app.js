@@ -7,9 +7,10 @@ const swig = require('swig');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const CORS = require('cors')();
 const app = express();
 
-
+app.use(CORS);
 app.use(morgan(':date'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));

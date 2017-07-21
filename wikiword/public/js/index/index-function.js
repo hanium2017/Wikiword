@@ -34,9 +34,10 @@ function eventSetting(){
 
 // 로그인시 키 세팅 함수
 function keySetting(){
+  console.log("111111111111111");
   axios({
      method: 'post',
-     url: 'http://localhost:3000/setting'
+     url: 'http://127.0.0.1:3000/setting'
    }).then(function(res){
      var key_data = res.data;
      console.log(key_data);
