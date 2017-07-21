@@ -4,7 +4,7 @@
 function getJSONData(object, predicate) {
   axios({
     method: 'get',
-    url: 'http://172.27.0.141:' + object.port + '/' + object.type + '?search=' + data + '&pageNum=' + object.pageNum
+    url: 'http://127.0.0.1:' + object.port + '/' + object.type + '?search=' + data + '&pageNum=' + object.pageNum
   }).then(function(res) {
     object.json = res.data;
     rendering(object, predicate)
