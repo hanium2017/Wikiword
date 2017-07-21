@@ -2,7 +2,7 @@
 function sessionEvent(action, data){
   axios({
      method: 'post',
-     url: 'http://localhost:3000/session/'+action,
+     url: 'http://127.0.0.1:3000/session/'+action,
      data : data
    }).then(function(res){
       var message = res.data.message;
