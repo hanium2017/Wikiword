@@ -1,10 +1,10 @@
-const express = require('express'),
-      request = require('request'),
-      bodyParser = require('body-parser'),
-      CORS = require('cors')(),
-      app = express(),
-      dbpia = require('./dbpia'),
-      API_KEY = require('../common/wikiword').API_KEY;
+const express = require('express')
+,request = require('request')
+,bodyParser = require('body-parser')
+,CORS = require('cors')()
+,app = express()
+,dbpia = require('./dbpia')
+,API_KEY = require('../common/wikiword').API_KEY;
 
 
 app.use(CORS);

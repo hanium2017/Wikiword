@@ -1,9 +1,9 @@
 const client = require('cheerio-httpcli'),
-  request = require('request'),
-  express = require('express'),
-  app = express(),
-  CORS = require('cors')(),
-  wikipedia = require('./wikipedia');
+, request = require('request')
+, express = require('express')
+, app = express()
+, CORS = require('cors')()
+, wikipedia = require('./wikipedia');
 
 app.use(CORS);
 app.get('/wikipedia', function(req, res) {
