@@ -1,7 +1,7 @@
 /*
   뉴스, 도서, dbpia, youtube, twitter 등 데이터를 얻어 렌더링 함수를 실행
  */
-function getJSONData(object, predicate, SERVER_IP) {
+function getJSONData(object, predicate) {
   axios({
     method: 'get',
     url: 'http://127.0.0.1:'+ object.port + '/' + object.type + '?search=' + data + '&pageNum=' + object.pageNum
