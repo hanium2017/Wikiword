@@ -12,13 +12,11 @@ function sessionEvent(action, data){
 
 // 로그인시 키 세팅 함수
 function keySetting(){
-  console.log("111111111111111");
   axios({
      method: 'post',
      url: 'http://localhost:3000/setting'
    }).then(function(res){
      var key_data = res.data;
-     console.log(key_data);
      google_oauthInit(key_data.google_client_id);
      facebook_setAppId(key_data.facebook_app_id);
    });

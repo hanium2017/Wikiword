@@ -10,7 +10,6 @@ app.get('/pinterest', (request, response) => {
 
   let url = "https://www.pinterest.co.kr/search/pins/?q="+encodeURIComponent(request.query.search);
   client.fetch(url, {}, function(err, $, res){
-
     const json_items = [];
     let jQuery = $, elementArray = jQuery("div.GrowthUnauthPinImage > a > img");
 
