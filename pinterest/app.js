@@ -1,8 +1,8 @@
-const client = require('cheerio-httpcli');
-const express = require('express');
-const cors = require('cors')();
-const bodyParser = require('body-parser');
-const app = express();
+const client = require('cheerio-httpcli')
+, express = require('express')
+, cors = require('cors')()
+, bodyParser = require('body-parser')
+, app = express();
 
 app.use(cors);
 app.use(bodyParser.urlencoded({extended: false}));

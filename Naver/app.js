@@ -1,10 +1,10 @@
-const express = require('express');
-const request = require('request');
-const bodyParser = require('body-parser');
-const CORS = require('cors')();
-const app = express();
-const naver = require('./naver');
-const API_KEY = require('../common/key');
+const express = require('express')
+, request = require('request')
+, bodyParser = require('body-parser')
+, CORS = require('cors')()
+, app = express()
+, naver = require('./naver')
+, API_KEY = require('../common/wikiword').API_KEY;
 
 var options = {
   url: null,

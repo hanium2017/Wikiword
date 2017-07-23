@@ -1,4 +1,7 @@
-let myslq = require('mysql');
+'use strict';
+const myslq = require('mysql'),
+	  DB_INFO = require('./wikiword.json').DB_INFO;
+	  
 const dbConfig = {
   host : 'localhost',
   user : 'hanium2017',

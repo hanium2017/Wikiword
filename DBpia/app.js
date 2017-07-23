@@ -4,11 +4,13 @@ const express = require('express'),
       CORS = require('cors')(),
       app = express(),
       dbpia = require('./dbpia'),
-      API_KEY = require('../common/key');
+      API_KEY = require('../common/wikiword').API_KEY;
+
 
 app.use(CORS);
 app.use(bodyParser.urlencoded({extended: false}))
-app.use('/dbpia', function(req, res) {
+
+app.get('/dbpia', function(req, res) {
   let url = 'http://api.dbpia.co.kr/v1/search/search.xml?target=se&key=' + API_KEY.dbpia_api
               + '&sorttype=2&sortorder=desc&pagecount=5&pyear=1&searchall=' + encodeURI(req.query.search)
               + '&pagenumber=' + req.query.pageNum;

@@ -1,10 +1,10 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const request = require('request');
-const CORS = require('cors')();
-const youtube = require('./youtube');
-const API_KEY = require('../common/key');
+const express = require('express')
+, app = express()
+, bodyParser = require('body-parser')
+, request = require('request')
+, CORS = require('cors')()
+, youtube = require('./youtube')
+, API_KEY = require('../common/wikiword').API_KEY;
 
 app.use(CORS);
 app.get('/youtube', function(req, res, next) {

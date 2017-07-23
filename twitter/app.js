@@ -1,10 +1,10 @@
-const express = require('express');
-const request = require('request');
-const bodyParser = require('body-parser');
-const cors = require('cors')();
-const app = express();
-const API_KEY = require('../common/key');
-const Twitter = require('node-twitter');
+const express = require('express')
+, request = require('request')
+, bodyParser = require('body-parser')
+, cors = require('cors')()
+, app = express()
+, API_KEY = require('../common/wikiword').API_KEY
+, Twitter = require('node-twitter');
 
 var twitterSearchClient = new Twitter.SearchClient(
     API_KEY.twitter_consumer_key,

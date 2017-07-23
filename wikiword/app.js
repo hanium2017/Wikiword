@@ -1,27 +1,29 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const index = require('./routes/index');
-const account = require('./routes/session');
-const swig = require('swig');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const morgan = require('morgan');
-const CORS = require('cors')();
-const app = express();
+/**
+ *  필요 모듈 세팅 및 환경 설정 부분
+ */
 
+const express = require('express'),
+	path = require('path'),
+	bodyParser = require('body-parser'),
+	swig = require('swig'), 
+	express_session = require('express-session'), 
+	cookieParser = require('cookie-parser'),
+	CORS = require('cors')(),
+	morgan = require('morgan'), 
+	app = express();
+	
 app.use(CORS);
-app.use(morgan(':date'))
+app.use(morgan())
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(cookieParser());
 
-app.use(session({
+app.use(express_session({
   key: 'sid', // 세션키
   secret: 'secret', // 비밀키
   cookie: {
@@ -29,7 +31,12 @@ app.use(session({
   }
 }));
 
-app.use('/', index);
-app.use('/session', account);
+
+/**
+ * 라우트 선언 부분
+ */
+const index = require('./routes/index')(app),
+	  session = require('./routes/session')(app);
+
 
 exports.app = app;

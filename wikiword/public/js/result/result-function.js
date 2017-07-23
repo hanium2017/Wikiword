@@ -4,7 +4,7 @@
 function getJSONData(object, predicate) {
   axios({
     method: 'get',
-    url: 'http://127.0.0.1:'+ object.port + '/' + object.type + '?search=' + data + '&pageNum=' + object.pageNum
+    url: 'http://localhost:'+ object.port + '/' + object.title + '?search=' + data + '&pageNum=' + object.pageNum
   }).then(function(res) {
     object.json = res.data;
     rendering(object, predicate)
@@ -19,7 +19,7 @@ function getJSONData(object, predicate) {
  */
 function rendering(object, predicate ){
 
-  var element = document.querySelector('.' + object.type + '-div');
+  var element = document.querySelector('.' + object.title + '-div');
   var items = object.json;
 
   element.innerHTML = '';
@@ -28,7 +28,7 @@ function rendering(object, predicate ){
   if(items[0].hasOwnProperty('message')) {
     element.innerHTML = '<h1>'+items[0].message+'</h1>';
   }
-//   else if(object.type == 'wikipedia'){
+//   else if(object.title == 'wikipedia'){
 //       // (items.length > 1)? predicate(item, str1) : predicate(item, str2);
 // }
 else {
