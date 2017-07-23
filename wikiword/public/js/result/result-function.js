@@ -2,6 +2,7 @@
   뉴스, 도서, dbpia, youtube, twitter 등 데이터를 얻어 렌더링 함수를 실행
  */
 function getJSONData(object, predicate) {
+  console.log(object);
   axios({
     method: 'get',
     url: 'http://127.0.0.1:' + object.port + '/' + object.type + '?search=' + data + '&pageNum=' + object.pageNum
@@ -17,7 +18,7 @@ function getJSONData(object, predicate) {
 /*
   실제 렌더링 함수
  */
-function rendering(object, predicate) {
+function rendering(object, predicate ){
 
   var element = document.querySelector('.' + object.type + '-div');
   var items = object.json;

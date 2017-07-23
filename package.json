@@ -4,7 +4,7 @@
   "description": "크롤러",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "forever start index.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "cors": "^2.8.3",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "forever": "^0.15.3",
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "node-twitter": "^0.5.3",
