@@ -10,8 +10,19 @@ var google_oauthInit = function(client_id) {
        // Request scopes in addition to 'profile' and 'email'
        scope: 'profile'
      });
+      attachSignin(document.getElementById('google_login'));
    });
  };
+
+function attachSignin(element) {
+  console.log(element.id);
+  auth2.attachClickHandler(element, {},
+    function(googleUser) {
+      gl_onSignIn(googleUser);
+    }, function(error) {
+      alert(JSON.stringify(error, undefined, 2));
+    });
+}
 
 
 function gl_onSignIn(googleUser) {
@@ -64,18 +75,18 @@ function gl_loginCheck(id_token, name){
    }
 }
 
-function renderButton() {
-  gapi.signin2.render('google_login', {
-    'scope': 'profile email',
-    'width': 300,
-    'height': 56,
-    'longtitle': true,
-    'theme': 'dark',
-    'onsuccess': gl_onSignIn,
-    'onfailure': onFailure
-  });
-}
+// function renderButton() {
+//   gapi.signin2.render('google_login', {
+//     'scope': 'profile email',
+//     'width': 300,
+//     'height': 56,
+//     'longtitle': true,
+//     'theme': 'dark',
+//     'onsuccess': gl_onSignIn,
+//     'onfailure': onFailure
+//   });
+// }
 
-function onFailure(error) {
-  console.log(error);
-}
+// function onFailure(error) {
+//   console.log(error);
+// }

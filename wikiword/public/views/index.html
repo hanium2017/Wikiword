@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html>
-<!-- {% include "./head/index-head.html" %} --><head>
-  <title> 위키워드  </title>
-  <link rel="stylesheet" href="/stylesheets/index.css "/>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://apis.google.com/js/api:client.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-  <script src="/js/common/google-oauth.js"></script>
-  <script src="/js/common/facebook-oauth.js"></script>
-  <script src="/js/common/common.js"></script>
-  <script src="/js/index/index-function.js"></script>
-  <script src="/js/index/index.js"></script>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
-</head>
+{% include "./head/index-head.html" %}
 
 <body>
 
   <div class="header-div">
     <input type="checkbox" id="sign-in" />
     <label for="sign-in" class="sign-in">
-        <span></span>
-      </label>
+      <span></span>
+    </label>
 
     <label for="sign-in" class="overlay"></label>
     <p href="" class="username"></p>
@@ -33,27 +21,26 @@
         </p>
       </div>
 
-      <div id="google_login"></div>
+      
+      <div id="google_login" class="oauth-button google">     
+        <img src="/images/google-plus.svg" />
+        <p>
+          Login with Google+
+        </p>
+      </a>
+    </div> 
 
-      <!--
-        <div id="google_login" class="oauth-button google">
-          <img src="/images/google-plus.svg" />
-          <p>
-            Login with Google+
-          </p>
-        </div> -->
-
-    </div>
   </div>
+</div>
 
-  <div class="main_div">
-    <img src="/images/main_logo.svg" />
-    <p>위키워드</p>
-  </div>
+<div class="main_div">
+  <img src="/images/main_logo.svg" />
+  <p>위키워드</p>
+</div>
 
-  <div class="search_div">
-    <input type="text" class="keyboard" />
-  </div>
+<div class="search_div">
+  <input type="text" class="keyboard" />
+</div>
 </body>
 
 </html>
