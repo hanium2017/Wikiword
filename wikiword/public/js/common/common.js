@@ -2,7 +2,7 @@
 function sessionEvent(action, data){
   axios({
      method: 'post',
-     url: 'http://127.0.0.1:3000/session/'+action,
+     url: 'http://localhost:3000/session/'+action,
      data : data
    }).then(function(res){
       var message = res.data.message;
@@ -10,6 +10,19 @@ function sessionEvent(action, data){
    });
 }
 
+// 로그인시 키 세팅 함수
+function keySetting(){
+  console.log("111111111111111");
+  axios({
+     method: 'post',
+     url: 'http://localhost:3000/setting'
+   }).then(function(res){
+     var key_data = res.data;
+     console.log(key_data);
+     google_oauthInit(key_data.google_client_id);
+     facebook_setAppId(key_data.facebook_app_id);
+   });
+}
 
 /*
     시간 구하는 함수
