@@ -1,4 +1,4 @@
-const client = require('cheerio-httpcli'),
+const client = require('cheerio-httpcli')
 , request = require('request')
 , express = require('express')
 , app = express()
