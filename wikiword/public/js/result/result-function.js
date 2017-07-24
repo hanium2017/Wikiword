@@ -5,7 +5,7 @@ function getJSONData(object, predicate) {
   console.log(host);
   axios({
     method: 'get',
-    url: 'http://'+ object.host + ':' + object.port + '/' + object.title + 
+    url: 'http://'+ host + ':' + object.port + '/' + object.title + 
          '?search=' + data + '&pageNum=' + object.pageNum
   }).then(function(res) {
     object.json = res.data;
