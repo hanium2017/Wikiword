@@ -4,6 +4,7 @@ module.exports = function(app){
 	const HOST = wikiword.HOST;
 
 	/* 서버 배포시 자동적으로 ip 적용하기 위해서 */	
+	console.log(require('os').type());
 	let hostIP = ('Linux' == require('os').type())? HOST.Linux : HOST.Windows; 
 	console.log("OS Platform HOST : " + hostIP);
 	app.get('/', function(req, res, next) {
