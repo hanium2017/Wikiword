@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   eventSetting();
 
-  getJSONData({port: 11100, title: 'wikipedia',pageNum:''}, (item) => {
+  getJSONData({port: 11100, title: 'wikipedia',pageNum:'', host : host}, (item) => {
     return `<div class="wikipedia">
   <wikipedia-description><p>${item.content}</p></wikipedia-description></div>`;
   });
