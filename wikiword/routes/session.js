@@ -20,8 +20,6 @@ module.exports = function(app){
       // 세션 값 체크 및 가져오기
       app.post('/session/check', function(req, res){
         let session = req.session;
-        console.log("session.type : " + session.type);
-
         if(!session.tokenId){
           console.log("false")
           res.send(JSON.stringify({ message : "false"}));

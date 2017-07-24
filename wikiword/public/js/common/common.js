@@ -1,23 +1,26 @@
 // 세션 관련 함수
-function sessionEvent(action, object){
-  console.log(action);
-  axios({
-     method: 'post',
-     url: 'http://localhost:3000/session/'+ action,
-     data : object
-   }).then(function(res){
+function sessionCreate(object){
+  axios.post('http://localhost:3000/session/create', object);
+}
 
-      var message = res.data.message;
-      var session = res.data.session;
+function sessionDelete(){
+  axios.post('http://localhost:3000/session/delete');
+}
 
-      if(message === "true" && action ==="check"){
-        console.log("type : " + session.type);
+function sessionCheck(){
+  axios.post('http://localhost:3000/session/check')
+  .then(function(res){
+      let message = res.data.message,
+          session = res.data.session;
+
+      if(message === "true"){
+        console.log("seesion type : " + session.type);
         if(session.type == "gl") {
-          gl_loginCheck(session);    
+          gl_loginElement(session);    
         } else if(session.type == "fb"){   
-          fb_loginCheck(session);  
+          fb_loginElement(session);  
         }
-      } else{
+      } else if(message === "false"){
         console.log("not session");
       }
    });

@@ -3,18 +3,16 @@
 var googleUser = {};
 var google_oauthInit = function(client_id) {
    gapi.load('auth2', function(){
-     // Retrieve the singleton for the GoogleAuth library and set up the client.
-     auth2 = gapi.auth2.init({
+     let auth2 = gapi.auth2.init({
        client_id: client_id,
        cookiepolicy: 'single_host_origin',
-       // Request scopes in addition to 'profile' and 'email'
        scope: 'profile'
      });
-      attachSignin(document.getElementById('google_login'));
+     attachSignin(auth2, document.getElementById('google_login'));
    });
  };
 
-function attachSignin(element) {
+function attachSignin(auth2, element) {
 
   auth2.attachClickHandler(element, {},
     function(googleUser) {
@@ -26,20 +24,18 @@ function attachSignin(element) {
 
 
 function gl_onSignIn(googleUser) {
-  let signin = document.querySelector('#sign-in');
-  let profile = googleUser.getBasicProfile();
-  let id_token = googleUser.getAuthResponse().id_token;
-  let name = profile.getName();
 
-  signin.checked=false;
   var object = {
     type: "gl",
-    tokenId : id_token,
-    userName: name
+    tokenId : googleUser.getAuthResponse().id_token,
+    userName: googleUser.getBasicProfile().getName()
   };
+
+  document.querySelector('#sign-in').checked=false;
   
    console.log('connected !');
-   gl_loginCheck(object);
+   gl_loginElement(object);
+   sessionCreate(object);  // 로그인 성공 시 세션 생성
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -51,22 +47,15 @@ function gl_onSignIn(googleUser) {
 }
 
 function gl_signOut() {
-  // let signin = document.querySelector('.sign-in');
-  // let username = document.querySelector('.username');
-
-  sessionEvent("delete");
+  sessionDelete(); // 로그아웃 시 세션 삭제
   gapi.auth2.getAuthInstance().signOut().then(function() {
      console.log('User signed out.');
-     // signin.classList.remove('invisible');
-     // username.innerHTML = "";
-     // username.removeAttribute('onclick');
      setTimeout(function(){document.location.reload();},300);
   });
 }
 
-function gl_loginCheck(object){
+function gl_loginElement(object){
 
-  sessionEvent("create", object);
   let signin = document.querySelector('.sign-in');
   let username = document.querySelector('.username');
 

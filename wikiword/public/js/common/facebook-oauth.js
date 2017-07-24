@@ -1,6 +1,5 @@
 // 페이스북 oauth 설정 준비
 // DOM이 렌더링 된 후 실해됨
-
 document.addEventListener('DOMContentLoaded',() => {
   window.fbAsyncInit = function() {
     FB.init({
@@ -30,8 +29,8 @@ function facebook_setAppId(id){
 }
 
 // 페이스북 로그인 체크 함수
-function fb_loginCheck(object){
-  sessionEvent("create", object);    
+function fb_loginElement(object){
+   
   let signin = document.querySelector('.sign-in'),
       username = document.querySelector('.username');
     
@@ -47,38 +46,33 @@ function fb_loginCheck(object){
 function fb_login(){
 
   FB.login(function(response) {
-   if (response.status === 'connected') {
+
+   if (response && response.status === 'connected') {
 
      document.querySelector('#sign-in').checked=false;
-
      FB.api('/me',response=>{
-      var object = {
-        type: "fb",
-        tokenId : response.id,
-        userName: response.name
-      };
-      fb_loginCheck(object);
-    });
+          var object = {
+            type: "fb",
+            tokenId : response.id,
+            userName: response.name
+          };
+          fb_loginElement(object);
+          sessionCreate(object);  
+      });
 
    } else {
      console.log('Problem!!')
    }
+
  }, {scope: 'public_profile, email'});
 }
 
 // 페이스북 로그인 아웃
 function fb_logout(){
 
-  // let signin = document.querySelector('.sign-in'),
-  //     username = document.querySelector('.username');
-
-  // signin.classList.remove('invisible');
-  // username.innerHTML = '';
-  // username.removeAttribute('onclick');
- 
   FB.getLoginStatus(function(response) {
       if (response && response.status === 'connected') {
-         sessionEvent("delete");
+         sessionDelete();
           FB.logout(function(response) {
               setTimeout(function(){document.location.reload();},300);
           });
