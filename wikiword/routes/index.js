@@ -1,13 +1,18 @@
 module.exports = function(app){
-	const API_KEY = require('../../common/wikiword').API_KEY;
-		/* wikiword main page. */
+	const wikiword = require('../../common/wikiword');
+	const API_KEY = wikiword.API_KEY;
+	const HOST = wikiword.HOST;
+
+	/* 서버 배포시 자동적으로 ip 적용하기 위해서 */	
+	let hostIP = ('Linux' == require('os').type())? HOST.Linux : HOST.Windows; 
+	console.log("OS Platform HOST : " + hostIP);
 	app.get('/', function(req, res, next) {
-	    res.render('index.html');
+	    res.render('index.html', { host : hostIP});
 	});
 
 	/* 검색 결과 페이지 */
 	app.get('/result',function(req,res){
-	  res.render('result.html',{ data : req.query.query });
+	  res.render('result.html',{ data : req.query.query,  host : hostIP});
 	});
 
 	/* 키값을 브라우저에 표시하지 않기 위해 서버에서 json 파일을 읽어 제공한다.*/

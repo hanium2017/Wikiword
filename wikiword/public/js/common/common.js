@@ -1,14 +1,15 @@
+
 // 세션 관련 함수
 function sessionCreate(object){
-  axios.post('http://localhost:3000/session/create', object);
+  axios.post('http://'+ host +':3000/session/create', object);
 }
 
 function sessionDelete(){
-  axios.post('http://localhost:3000/session/delete');
+  axios.post('http://'+ host +':3000/session/delete');
 }
 
 function sessionCheck(){
-  axios.post('http://localhost:3000/session/check')
+  axios.post('http://'+ host +':3000/session/check')
   .then(function(res){
       let message = res.data.message,
           session = res.data.session;
@@ -31,11 +32,12 @@ function sessionCheck(){
 function keySetting(){
   axios({
      method: 'post',
-     url: 'http://localhost:3000/setting'
+     url: 'http://'+ host +':3000/setting'
    }).then(function(res){
-     var key_data = res.data;
-     google_oauthInit(key_data.google_client_id);
-     facebook_setAppId(key_data.facebook_app_id);
+     var data = res.data
+     sever_host = data.host;
+     google_oauthInit(data.google_client_id);
+     facebook_setAppId(data.facebook_app_id);
    });
 }
 
