@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-{% include "./head/result-head.html" %}
+{% include "./result/result-head.html" %}
 <body>
   <div class="title-div">
     <a href='/'>
@@ -13,30 +13,10 @@
     </div>
   </div>
 
-  <div class="blank_div">
-  </div>
-
+  <div class="blank_div"></div>
   <hr />
 
-  <div class="wikipedia-div"></div>
-    <hr /><br /><br />
-
-  <div class="pinterest-div"></div>
-    <hr /><br /><br />
-
-  <div class="news-div"></div>
-    <hr /><br /><br />
-
-  <div class="book-div"></div>
-    <hr /><br /><br />
-
-  <div class="youtube-div"></div>
-      <hr /><br /><br />
-
-  <div class="twitter-div"></div>
-    <hr /><br /><br />
-
-  <div class="dbpia-div"></div>
+  {% include "./result/result-content.html" %}
 
 </body>
 

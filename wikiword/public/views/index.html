@@ -1,37 +1,10 @@
 <!DOCTYPE html>
 <html>
-{% include "./head/index-head.html" %}
+{% include "./index/index-head.html" %}
 
 <body>
 
-  <div class="header-div">
-    <input type="checkbox" id="sign-in" />
-    <label for="sign-in" class="sign-in">
-      <span></span>
-    </label>
-
-    <label for="sign-in" class="overlay"></label>
-    <p href="" class="username"></p>
-    <div class="login-div">
-      <p class="login-title">Login</p>
-       <div class="oauth-button facebook" onclick="fb_login();">
-        <img src="/images/facebook-3.svg" />
-        <p>
-          Sign in with Facebook
-        </p>
-      </div>
-
-      
-      <div id="google_login" class="oauth-button google">     
-        <img src="/images/google-plus.svg" />
-        <p>
-          Login with Google+
-        </p>
-      </a>
-    </div> 
-
-  </div>
-</div>
+{% include "./index/index-header.html" %}
 
 <div class="main_div">
   <img src="/images/main_logo.svg" />
@@ -41,6 +14,6 @@
 <div class="search_div">
   <input type="text" class="keyboard" />
 </div>
-</body>
 
+</body>
 </html>
