@@ -2,18 +2,18 @@
   "name": "pinterest",
   "version": "1.0.0",
   "description": "크롤러",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
+    "test": "nodemon index.js",
     "start": "forever start index.js",
-    "test": "nodemon index.js"
+    "stop": "forever stop 0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hanium2017/Wikiword.git"
   },
   "keywords": [
-    "all",
-    "start"
+    "all", "start"
   ],
   "author": "윤태영",
   "license": "ISC",
@@ -37,7 +37,6 @@
     "path": "^0.12.7",
     "request": "^2.81.0",
     "swig": "^1.4.2",
-    "wikiword": "file:twitter",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {}
