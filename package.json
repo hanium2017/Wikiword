@@ -1,5 +1,5 @@
 {
-  "name": "pinterest",
+  "name": "wikiword",
   "version": "1.0.0",
   "description": "크롤러",
   "main": "index.js",
