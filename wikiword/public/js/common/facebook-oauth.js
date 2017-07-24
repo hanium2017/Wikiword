@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',() => {
       xfbml      : true,
       version    : 'v2.8'
     });
-    fb_loginCheck();
+
   };
 
   (function(d, s, id){
@@ -26,51 +26,64 @@ document.addEventListener('DOMContentLoaded',() => {
 
 let app_id = null;
 function facebook_setAppId(id){
-    console.log("id : " + id)
     app_id = id;
 }
 
 // 페이스북 로그인 체크 함수
-function fb_loginCheck(){
-  let signin = document.querySelector('.sign-in');
-  let username = document.querySelector('.username');
-  FB.api('/me',response=>{
-    if(response.id){
-      //signin.style.display = 'none';
+function fb_loginCheck(object){
+  sessionEvent("create", object);    
+  let signin = document.querySelector('.sign-in'),
+      username = document.querySelector('.username');
+    
+  if(object.type === "fb" && object.tokenId !== undefined){
       signin.classList.add('invisible');
-      username.innerHTML = response.name+' 님';
+      username.innerHTML = object.userName+' 님';
       username.setAttribute('onclick','fb_logout();');
-      response.type = "fb";
-      sessionEvent("create", response);
-    }else{
-      //signin.style.display = "inline-block";
-      signin.classList.remove('invisible');
-      username.innerHTML = '';
-      username.removeAttribute('onclick');
-    }
-
-  });
+    } 
 }
+
 
 // 페이스북 로그인 함수
 function fb_login(){
-  let signin = document.querySelector('#sign-in');
+
   FB.login(function(response) {
-     if (response.status === 'connected') {
-       console.log('connected !');
-       signin.checked=false;
-       fb_loginCheck();
-     } else {
-       console.log('Problem!!')
-     }
-   }, {scope: 'public_profile, email'});
+   if (response.status === 'connected') {
+
+     document.querySelector('#sign-in').checked=false;
+
+     FB.api('/me',response=>{
+      var object = {
+        type: "fb",
+        tokenId : response.id,
+        userName: response.name
+      };
+      fb_loginCheck(object);
+    });
+
+   } else {
+     console.log('Problem!!')
+   }
+ }, {scope: 'public_profile, email'});
 }
 
 // 페이스북 로그인 아웃
 function fb_logout(){
-  FB.logout(function(response){
-    console.log('User signed out.');
-    sessionEvent("delete");
-    fb_loginCheck();
+
+  // let signin = document.querySelector('.sign-in'),
+  //     username = document.querySelector('.username');
+
+  // signin.classList.remove('invisible');
+  // username.innerHTML = '';
+  // username.removeAttribute('onclick');
+ 
+  FB.getLoginStatus(function(response) {
+      if (response && response.status === 'connected') {
+         sessionEvent("delete");
+          FB.logout(function(response) {
+              setTimeout(function(){document.location.reload();},300);
+          });
+      } else {
+        setTimeout(function(){document.location.reload();},300);
+      }
   });
 }

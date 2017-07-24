@@ -1,12 +1,25 @@
 // 세션 관련 함수
-function sessionEvent(action, data){
+function sessionEvent(action, object){
+  console.log(action);
   axios({
      method: 'post',
-     url: 'http://localhost:3000/session/'+action,
-     data : data
+     url: 'http://localhost:3000/session/'+ action,
+     data : object
    }).then(function(res){
+
       var message = res.data.message;
-      console.log(message);
+      var session = res.data.session;
+
+      if(message === "true" && action ==="check"){
+        console.log("type : " + session.type);
+        if(session.type == "gl") {
+          gl_loginCheck(session);    
+        } else if(session.type == "fb"){   
+          fb_loginCheck(session);  
+        }
+      } else{
+        console.log("not session");
+      }
    });
 }
 

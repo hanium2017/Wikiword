@@ -13,7 +13,7 @@ const express = require('express')
 , app = express();
 	
 app.use(CORS);
-app.use(morgan())
+app.use(morgan(':date'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.engine('html', swig.renderFile);
@@ -25,10 +25,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(express_session({
   key: 'sid', // 세션키
-  secret: 'secret', // 비밀키
-  cookie: {
-    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
-  }
+  secret: 'secret' // 세션 비밀키
 }));
 
 

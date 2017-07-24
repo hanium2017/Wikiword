@@ -28,7 +28,7 @@ function rendering(object, predicate ){
   if(items[0].hasOwnProperty('message')) {
     element.innerHTML = '<h1>'+items[0].message+'</h1>';
   }
-//   else if(object.title == 'wikipedia'){
+//   else if(object.type == 'wikipedia'){
 //       // (items.length > 1)? predicate(item, str1) : predicate(item, str2);
 // }
 else {

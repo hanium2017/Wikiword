@@ -15,7 +15,7 @@ var google_oauthInit = function(client_id) {
  };
 
 function attachSignin(element) {
-  console.log(element.id);
+
   auth2.attachClickHandler(element, {},
     function(googleUser) {
       gl_onSignIn(googleUser);
@@ -34,13 +34,12 @@ function gl_onSignIn(googleUser) {
   signin.checked=false;
   var object = {
     type: "gl",
-    id: id_token,
-    name: name
+    tokenId : id_token,
+    userName: name
   };
   
    console.log('connected !');
-   sessionEvent("create", object);
-   gl_loginCheck(id_token, name);
+   gl_loginCheck(object);
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -52,41 +51,28 @@ function gl_onSignIn(googleUser) {
 }
 
 function gl_signOut() {
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function() {
+  // let signin = document.querySelector('.sign-in');
+  // let username = document.querySelector('.username');
+
+  sessionEvent("delete");
+  gapi.auth2.getAuthInstance().signOut().then(function() {
      console.log('User signed out.');
-     sessionEvent("delete")
-     gl_loginCheck(null, '')
+     // signin.classList.remove('invisible');
+     // username.innerHTML = "";
+     // username.removeAttribute('onclick');
+     setTimeout(function(){document.location.reload();},300);
   });
 }
 
-function gl_loginCheck(id_token, name){
+function gl_loginCheck(object){
+
+  sessionEvent("create", object);
   let signin = document.querySelector('.sign-in');
   let username = document.querySelector('.username');
 
-   if(id_token){
+  if(object.type === "gl" && object.tokenId !== undefined){
      signin.classList.add('invisible');
-     username.innerHTML = name +' 님';
+     username.innerHTML = object.userName +' 님';
      username.setAttribute('onclick','gl_signOut();');
-   } else{
-     signin.classList.remove('invisible');
-     username.innerHTML = name;
-     username.removeAttribute('onclick');
-   }
+   } 
 }
-
-// function renderButton() {
-//   gapi.signin2.render('google_login', {
-//     'scope': 'profile email',
-//     'width': 300,
-//     'height': 56,
-//     'longtitle': true,
-//     'theme': 'dark',
-//     'onsuccess': gl_onSignIn,
-//     'onfailure': onFailure
-//   });
-// }
-
-// function onFailure(error) {
-//   console.log(error);
-// }
