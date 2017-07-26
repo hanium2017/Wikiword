@@ -11,7 +11,7 @@ function getJSONData(object, predicate) {
     object.json = res.data;
     rendering(object, predicate)
   }).catch(function(err) {
-    console.error(err);
+    console.error(err); 
   });
 }
 
