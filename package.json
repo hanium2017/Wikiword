@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nodemon index.js",
     "start": "forever start -c nodemon index.js",
-    "stop": "forever stop 0"
+    "stop": "forever stop 0",
+    "restart" : "forever restart -c nodemon index.js"
   },
   "repository": {
     "type": "git",
