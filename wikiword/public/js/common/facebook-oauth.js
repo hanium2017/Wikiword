@@ -74,10 +74,10 @@ function fb_logout(){
       if (response && response.status === 'connected') {
          sessionDelete();
           FB.logout(function(response) {
-              setTimeout(function(){document.location.reload();},300);
+              setTimeout(function(){document.location.reload();},200);
           });
       } else {
-        setTimeout(function(){document.location.reload();},300);
+        setTimeout(function(){document.location.reload();},200);
       }
   });
 }

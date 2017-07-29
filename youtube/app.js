@@ -17,9 +17,9 @@ app.get('/youtube', function(req, res, next) {
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(JSON.stringify(youtube.analyzeJSON(body)));
     } else {
-      res.status(response.statusCode).end();
-      console.log('Error = ' + response.statusCode);
+      console.log('Error = ' +  res.status(response.statusCode).end());
     }
+    
   });
 });
 

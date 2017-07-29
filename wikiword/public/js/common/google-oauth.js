@@ -1,7 +1,7 @@
 // // 구글 oauth 설정 준비
 // // DOM이 렌더링 된 후 실해됨
-var googleUser = {};
-var google_oauthInit = function(client_id) {
+const googleUser = {};
+let google_oauthInit = function(client_id) {
    gapi.load('auth2', function(){
      let auth2 = gapi.auth2.init({
        client_id: client_id,
@@ -25,7 +25,7 @@ function attachSignin(auth2, element) {
 
 function gl_onSignIn(googleUser) {
 
-  var object = {
+  const object = {
     type: "gl",
     tokenId : googleUser.getAuthResponse().id_token,
     userName: googleUser.getBasicProfile().getName()
@@ -50,7 +50,7 @@ function gl_signOut() {
   sessionDelete(); // 로그아웃 시 세션 삭제
   gapi.auth2.getAuthInstance().signOut().then(function() {
      console.log('User signed out.');
-     setTimeout(function(){document.location.reload();},300);
+     setTimeout(function(){document.location.reload();},200);
   });
 }
 

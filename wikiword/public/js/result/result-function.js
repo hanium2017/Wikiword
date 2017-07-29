@@ -2,7 +2,6 @@
   뉴스, 도서, dbpia, youtube, twitter 등 데이터를 얻어 렌더링 함수를 실행
  */
 function getJSONData(object, predicate) {
-  console.log(host);
   axios({
     method: 'get',
     url: 'http://'+ host + ':' + object.port + '/' + object.title + 
@@ -21,8 +20,8 @@ function getJSONData(object, predicate) {
  */
 function rendering(object, predicate ){
 
-  var element = document.querySelector('.' + object.title + '-div');
-  var items = object.json;
+  let element = document.querySelector('.' + object.title + '-div');
+  const items = object.json;
 
   element.innerHTML = '';
 
@@ -30,9 +29,7 @@ function rendering(object, predicate ){
   if(items[0].hasOwnProperty('message')) {
     element.innerHTML = '<h1>'+items[0].message+'</h1>';
   } else {
-    items.forEach(item => {
-      element.innerHTML += predicate(item);
-    });
+    for(let item of items) element.innerHTML += predicate(item);
   }
 }
 

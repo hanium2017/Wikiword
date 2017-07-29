@@ -1,15 +1,14 @@
 exports.analyzeJSON = function (body, type){
   const JSONArray = [];
-  let items = JSON.parse(body).items;
+  const items = JSON.parse(body).items;
 
   if(items.length === 0){
     JSONArray.push({"message":"검색 된 자료가 없습니다."});
   } else {
     let deleteAttribute = (( type == 'news') ? 'originallink' : 'isbn');
-    for(var i = 0, max = items.length; i < max; i++){
-      let JSONObject = items[i];
-      delete JSONObject[deleteAttribute];
-      JSONArray.push(JSONObject);
+    for(let item of items){
+      delete item[deleteAttribute];
+      JSONArray.push(item);
     }
   }
   return JSON.stringify(JSONArray);

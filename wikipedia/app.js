@@ -6,12 +6,12 @@ const client = require('cheerio-httpcli')
 , wikipedia = require('./wikipedia');
 
 app.use(CORS);
-app.get('/wikipedia', function(req, res) {
+app.get('/wikipedia', (req, res) => {
 
   let url = "https://ko.wikipedia.org/wiki/" + encodeURIComponent(req.query.search);
-  client.fetch(url, {}, function(err, $, response) {
-    let jQuery = $;
-    var JSONArray = null;
+  client.fetch(url, {}, (err, $, response) => {
+    const jQuery = $;
+    let JSONArray = null;
 
     if (wikipedia.htmlClassCheck(jQuery)) {
       JSONArray = wikipedia.homonymCrawling(jQuery)

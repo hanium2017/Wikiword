@@ -3,10 +3,12 @@ exports.homonymCrawling = function(jQuery){
   let url = "https://ko.wikipedia.org";
   const JSONArray = [];
   jQuery('.mw-parser-output li').each(function(idx){
-    const object = {};
-    let liTag = jQuery(this);
+    const object = {},
+          liTag = jQuery(this);
+    
     liTag.find('a').each(function(){
-      let anchorElement = jQuery(this);
+      // 여기서 anchorElement는 litag안 a태그 자신을 가리킨다.
+      const anchorElement = jQuery(this);
       anchorElement.attr("href",  url + anchorElement.attr('href'));
     })
     object.content = liTag.html();
@@ -30,6 +32,7 @@ exports.wikiSearchCrawling = function(jQuery){
     } else if (bool === true) {
 
       pTag.find('a').each(function(){
+        // 여기서 anchorElement는 ptag안 a태그 자신을 가리킨다.
         let anchorElement = jQuery(this);
         anchorElement.attr("href",  url + anchorElement.attr('href'));
       });
@@ -38,8 +41,10 @@ exports.wikiSearchCrawling = function(jQuery){
   });
   object.content = str;
 
-  if(object.content == ""){ JSONArray.push({"message" : "찾는 내용이 없습니다."});}
-  else{JSONArray.push(object);}
+  if(object.content == "")
+    JSONArray.push({"message" : "찾는 내용이 없습니다."});
+  else
+    JSONArray.push(object);
 
   return JSONArray;
 }

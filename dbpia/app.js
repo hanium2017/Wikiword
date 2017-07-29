@@ -10,18 +10,17 @@ const express = require('express')
 app.use(CORS);
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.get('/dbpia', function(req, res) {
+app.get('/dbpia', (req, res) => {
   let url = 'http://api.dbpia.co.kr/v1/search/search.xml?target=se&key=' + API_KEY.dbpia_api
               + '&sorttype=2&sortorder=desc&pagecount=5&pyear=1&searchall=' + encodeURI(req.query.search)
               + '&pagenumber=' + req.query.pageNum;
 
-  request(url, function(err, response, body) {
-    if (!err && response.statusCode == 200) {
+  request(url, (error, response, body) => {
+    if (!error && response.statusCode == 200) {
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(JSON.stringify(dbpia.analyzeXML(body)));
     } else {
-      res.status(response.statusCode).end();
-      console.log('Error = ' + response.statusCode);
+      console.log('Error = ' + res.status(response.statusCode).end());
     }
   });
 })

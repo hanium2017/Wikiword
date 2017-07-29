@@ -9,13 +9,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.get('/pinterest', (request, response) => {
 
   let url = "https://www.pinterest.co.kr/search/pins/?q="+encodeURIComponent(request.query.search);
-  client.fetch(url, {}, function(err, $, res){
-    const json_items = [];
-    let jQuery = $, elementArray = jQuery("div.GrowthUnauthPinImage > a > img");
+  client.fetch(url, {}, (err, $, res) => {
+    const json_items = [],
+          jQuery = $, 
+          elementArray = jQuery("div.GrowthUnauthPinImage > a > img");
 
     if(elementArray.length == 0){
       json_items.push({'message' : '이미지를 찾을 수 없습니다.' });
     } else{
+      // each에는 arrow-function쓰면 에러 나옴.      
       elementArray.each(function(idx){
         const object = {};
         let imgTag = jQuery(this);

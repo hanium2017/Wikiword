@@ -15,7 +15,6 @@ function sessionCheck(){
           session = res.data.session;
 
       if(message === "true"){
-        console.log("seesion type : " + session.type);
         if(session.type == "gl") {
           gl_loginElement(session);    
         } else if(session.type == "fb"){   
@@ -34,8 +33,7 @@ function keySetting(){
      method: 'post',
      url: 'http://'+ host +':3000/setting'
    }).then(function(res){
-     var data = res.data
-     sever_host = data.host;
+     let data = res.data;
      google_oauthInit(data.google_client_id);
      facebook_setAppId(data.facebook_app_id);
    });

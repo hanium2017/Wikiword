@@ -16,30 +16,28 @@ var twitterSearchClient = new Twitter.SearchClient(
 app.use(cors);
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/twitter', function(req, res) {
+app.get('/twitter', (req, res) => {
 
-  twitterSearchClient.search({'q': req.query.search}, function(error, result) {
-      var json_items =[];
-      var items = result.statuses;
+  twitterSearchClient.search({'q': req.query.search}, (error, result) => {
+      const JSONArray =[],
+            items = result.statuses;
 
       if(items.length === 0 ){
-        json_items.push({"message":"검색 된 자료가 없습니다."});
+        JSONArray.push({"message":"검색 된 자료가 없습니다."});
       } else {
-        for(var index = 0, max = 7; index < max; index++){
-          var object = {};
-          var item = items[index];
+        for(let item of items){
           if( item != undefined ){
+            const object = {};
             object.pubDate = item.created_at;
             object.text = item.text;
             object.url = (item.entities.hasOwnProperty('media'))? item.entities.media[0].url : '# onclick=return false';
             object.name = item.user.name;
             object.profile_image_url = item.user.profile_image_url;
-            json_items.push(object);
+            JSONArray.push(object);
           }
-
         }
       }
-      res.send(JSON.stringify(json_items));
+      res.send(JSON.stringify(JSONArray));
   });
 });
 

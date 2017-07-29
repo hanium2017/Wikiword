@@ -18,7 +18,7 @@ app.use(CORS);
 app.use(bodyParser.urlencoded({extended: false}))
 
 /* type에 news or book을 넣으면 거기에 맞는 json을 출력한다. */
-app.get('/:type', function(req, res) {
+app.get('/:type', (req, res) => {
 
   let type = req.params.type;
   let url = 'https://openapi.naver.com/v1/search/'+ type +'?display=5&query='
@@ -29,10 +29,8 @@ app.get('/:type', function(req, res) {
     if (!error && response.statusCode == 200) {
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(naver.analyzeJSON(body, type));
-
     } else {
-      res.status(response.statusCode).end();
-      console.log('Error = ' + response.statusCode);
+      console.log('Error = ' + res.status(response.statusCode).end());
     }
   });
 })
