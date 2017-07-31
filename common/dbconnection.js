@@ -4,6 +4,7 @@ const MYSQL = require('mysql'),
 	  
 const dbConfig = {
   host : DB_INFO.host,
+  port : DB_INFO.port,
   user : DB_INFO.user,
   password : DB_INFO.password,
   database : DB_INFO.database

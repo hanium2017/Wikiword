@@ -34,9 +34,9 @@ function fb_loginElement(object){
   let signin = document.querySelector('.sign-in'),
       username = document.querySelector('.username');
     
-  if(object.type === "fb" && object.tokenId !== undefined){
+  if(object.login_type === "facebook" && object.token_id !== undefined){
       signin.classList.add('invisible');
-      username.innerHTML = object.userName+' 님';
+      username.innerHTML = object.name+' 님';
       username.setAttribute('onclick','fb_logout();');
     } 
 }
@@ -48,23 +48,23 @@ function fb_login(){
   FB.login(function(response) {
 
    if (response && response.status === 'connected') {
-
      document.querySelector('#sign-in').checked=false;
      FB.api('/me',response=>{
           var object = {
-            type: "fb",
-            tokenId : response.id,
-            userName: response.name
+            login_type: "facebook",
+            token_id : response.id,
+            name: response.name,
+            email : response.email
           };
           fb_loginElement(object);
-          sessionCreate(object);  
+          wikiWordSignIn(object);  
       });
 
    } else {
      console.log('Problem!!')
    }
 
- }, {scope: 'public_profile, email'});
+ }, {scope: 'email,public_profile'});
 }
 
 // 페이스북 로그인 아웃
@@ -72,12 +72,12 @@ function fb_logout(){
 
   FB.getLoginStatus(function(response) {
       if (response && response.status === 'connected') {
-         sessionDelete();
+         wikiWordSignOut();
           FB.logout(function(response) {
-              setTimeout(function(){document.location.reload();},200);
+              setTimeout(function(){document.location.reload();}, 150);
           });
       } else {
-        setTimeout(function(){document.location.reload();},200);
+        setTimeout(function(){document.location.reload();}, 150);
       }
   });
 }

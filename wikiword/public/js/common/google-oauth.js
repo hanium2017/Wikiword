@@ -26,16 +26,17 @@ function attachSignin(auth2, element) {
 function gl_onSignIn(googleUser) {
 
   const object = {
-    type: "gl",
-    tokenId : googleUser.getAuthResponse().id_token,
-    userName: googleUser.getBasicProfile().getName()
+    login_type: "google",
+    token_id : googleUser.getAuthResponse().id_token.substring(0, 50),  //전체 길이가 1149임
+    name : googleUser.getBasicProfile().getName(),
+    email : googleUser.getBasicProfile().getEmail()
   };
 
   document.querySelector('#sign-in').checked=false;
   
    console.log('connected !');
    gl_loginElement(object);
-   sessionCreate(object);  // 로그인 성공 시 세션 생성
+   wikiWordSignIn(object);  // 로그인 성공 시 세션 생성
 
    // console.log("ID Token: " + id_token);
    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -47,10 +48,10 @@ function gl_onSignIn(googleUser) {
 }
 
 function gl_signOut() {
-  sessionDelete(); // 로그아웃 시 세션 삭제
+  wikiWordSignOut(); // 로그아웃 시 세션 삭제
   gapi.auth2.getAuthInstance().signOut().then(function() {
      console.log('User signed out.');
-     setTimeout(function(){document.location.reload();},200);
+     setTimeout(function(){document.location.reload();}, 150);
   });
 }
 
@@ -59,9 +60,9 @@ function gl_loginElement(object){
   let signin = document.querySelector('.sign-in');
   let username = document.querySelector('.username');
 
-  if(object.type === "gl" && object.tokenId !== undefined){
+  if(object.login_type === "google" && object.token_id !== undefined){
      signin.classList.add('invisible');
-     username.innerHTML = object.userName +' 님';
+     username.innerHTML = object.name +' 님';
      username.setAttribute('onclick','gl_signOut();');
    } 
 }

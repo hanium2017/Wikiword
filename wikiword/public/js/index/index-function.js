@@ -1,2 +1,2 @@
-document.addEventListener('DOMContentLoaded', function() { keySetting(); eventSetting(); sessionCheck();});
+document.addEventListener('DOMContentLoaded', function() { keySetting(); eventSetting(); wikiWordSignInCheck();});
 

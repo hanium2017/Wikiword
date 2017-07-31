@@ -1,23 +1,23 @@
 
-// 세션 관련 함수
-function sessionCreate(object){
-  axios.post('http://'+ host +':3000/session/create', object);
+// 로그인 관련 함수
+function wikiWordSignIn(object){
+  axios.post(`http://${host}:3000/sign_in`, object);
 }
 
-function sessionDelete(){
-  axios.post('http://'+ host +':3000/session/delete');
+function wikiWordSignOut(){
+  axios.post(`http://${host}:3000/sign_out`);
 }
 
-function sessionCheck(){
-  axios.post('http://'+ host +':3000/session/check')
+function wikiWordSignInCheck(){
+  axios.post(`http://${host}:3000/sign_in/check`)
   .then(function(res){
       let message = res.data.message,
           session = res.data.session;
 
       if(message === "true"){
-        if(session.type == "gl") {
+        if(session.login_type == "google") {
           gl_loginElement(session);    
-        } else if(session.type == "fb"){   
+        } else if(session.login_type == "facebook"){   
           fb_loginElement(session);  
         }
       } else if(message === "false"){
@@ -31,7 +31,7 @@ function sessionCheck(){
 function keySetting(){
   axios({
      method: 'post',
-     url: 'http://'+ host +':3000/setting'
+     url: `http://${host}:3000/setting`
    }).then(function(res){
      let data = res.data;
      google_oauthInit(data.google_client_id);

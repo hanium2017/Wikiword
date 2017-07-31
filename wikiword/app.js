@@ -9,7 +9,8 @@ const express = require('express')
 , cookieParser = require('cookie-parser')
 , CORS = require('cors')()
 , morgan = require('morgan')
-, app = express();
+, app = express()
+, dbPool = require('../common/dbconnection').dbPool;
 	
 app.use(CORS);
 app.use(morgan(':date'))
@@ -32,7 +33,7 @@ app.use(express_session({
  * 라우트 선언 부분
  */
 const index = require('./routes/index')(app)
-, session = require('./routes/session')(app);
+, signInOut = require('./routes/signInOut')(app, dbPool);
 
 
 exports.app = app;
