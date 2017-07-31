@@ -3,30 +3,33 @@ module.exports = function(app, dbPool){
       // 로그인
       app.post('/sign_in', (req, res) => {
         
-         const body = req.body;
-         const object = { 
-                token_id: body.token_id, 
-                login_type : body.login_type, 
-                name : body.name, 
-                email : body.email 
-         };
+         const body = req.body,
+               object = {  token_id: body.token_id, 
+                           login_type : body.login_type, 
+                           name : body.name, 
+                           email : body.email  
+                         };
 
-
+      
+         // Member 테이블에 추가
          dbPool.getConnection(function(err, conn){
             conn.query('select count(*) as count from wk_member where token_id = ?', [object.token_id], 
               function(err, rows){
-                if(rows[0].count != 1){
-                  conn.query('insert into wk_member set ?', object, function(err, rows){
-                      
+
+                if(rows[0].count == 0 && object.token_id != undefined){
+                  conn.query('insert into wk_member set ?', object, function(err, rows){      
                       if(err) console.log(err);
-            
-                      createSession(object, req.session)
                       conn.release();
                   });
                 }
-              }); 
-           })
-         });
+              
+               // 세션 생성                  
+               createSession(object, req.session)
+            }); 
+          });
+
+
+      });
 
       // 로그 아웃
       app.post('/sign_out', (req, res) => {
