@@ -27,7 +27,7 @@ function gl_onSignIn(googleUser) {
 
   const object = {
     login_type: "google",
-    token_id : googleUser.getAuthResponse().id_token.substring(0, 50),  //전체 길이가 1149임
+    token_id : googleUser.getAuthResponse().id_token.substring(0, 20),  //전체 길이가 1149임
     name : googleUser.getBasicProfile().getName(),
     email : googleUser.getBasicProfile().getEmail()
   };
