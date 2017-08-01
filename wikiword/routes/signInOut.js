@@ -17,14 +17,11 @@ module.exports = function(app, dbPool){
               function(err, rows){
 
                 if(rows[0].count == 0 && object.token_id != undefined){
-                  conn.query('insert into wk_member set ?', object, function(err, rows){      
-                      if(err) console.log(err);
-                      conn.release();
-                  });
+                  conn.query('insert into wk_member set ?', object, (err, rows) => { console.log(err); });
                 }
-              
-               // 세션 생성                  
-               createSession(object, req.session)
+                      
+               createSession(object, req.session); // 세션 생성    
+               conn.release(); // DB 연동 해제
             }); 
           });
 
