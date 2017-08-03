@@ -4,7 +4,8 @@ module.exports = function(app, dbPool){
       app.post('/sign_in', (req, res) => {
         
          const body = req.body,
-               object = {  token_id: body.token_id, 
+               object = {  
+                           token_id: body.token_id, 
                            login_type : body.login_type, 
                            name : body.name, 
                            email : body.email  
