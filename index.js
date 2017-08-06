@@ -1,2 +1,2 @@
-'use strict';
-require('./common/start');
+'use strict'
+require('./common/start')
