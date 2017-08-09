@@ -7,7 +7,7 @@
     "test": "nodemon index.js",
     "start": "forever start index.js",
     "stop": "forever stop 0",
-    "restart" : "forever restart index.js"
+    "restart": "forever restart index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hanium2017/Wikiword#readme",
   "dependencies": {
+    "async": "^2.5.0",
     "body-parser": "^1.17.2",
     "cheerio-httpcli": "^0.7.0",
     "cookie-parser": "^1.4.3",

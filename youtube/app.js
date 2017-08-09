@@ -4,17 +4,16 @@ const express = require('express'),
   request = require('request'),
   CORS = require('cors')(),
   youtube = require('./youtube'),
-  API_KEY = require('../common/wikiword').API_KEY
+  google_api = require('../common/wikiword').API_KEY.google_api
 
 app.use(CORS)
 app.get('/youtube', function (req, res, next) {
   let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet' +
   '&maxResults=5&order=viewCount&type=video&videoDefinition=high' +
-  '&q=' + encodeURI(req.query.search, 'utf-8') + '&key=' + API_KEY.google_api + '&pageToken=' + req.query.pageNum
+  '&q=' + encodeURI(req.query.search, 'utf-8') + '&key=' + google_api+ '&pageToken=' + req.query.pageNum
   request(url, function (err, response, body) {
     if (!err && response.statusCode == 200) {
-      res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'})
-      res.end(JSON.stringify(youtube.analyzeJSON(body)))
+        youtube.analyzeJSON(body, res);
     } else {
       console.log('Error = ' + res.status(response.statusCode).end())
     }
