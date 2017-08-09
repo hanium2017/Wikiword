@@ -8,9 +8,8 @@ const express = require('express'),
 
 app.use(CORS)
 app.get('/youtube', function (req, res, next) {
-  let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet' +
-  '&maxResults=5&order=viewCount&type=video&videoDefinition=high' +
-  '&q=' + encodeURI(req.query.search, 'utf-8') + '&key=' + google_api+ '&pageToken=' + req.query.pageNum
+  let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=viewCount&type=video&videoDefinition=high&q=${encodeURI(req.query.search, 'utf-8')}&key=${google_api}&pageToken=${req.query.pageNum}`
+
   request(url, function (err, response, body) {
     if (!err && response.statusCode == 200) {
         youtube.analyzeJSON(body, res);

@@ -6,4 +6,4 @@
 
 git pull
 
-npm restart
+npm install & npm restart
