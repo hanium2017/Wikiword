@@ -8,6 +8,8 @@ exports.analyzeJSON = function(body, serverResponse) {
 
     if (analyze_json.items.length === 0) {
         JSONArray.push({ 'message': '검색 된 자료가 없습니다.' })
+        serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
+        serverResponse.end(JSON.stringify(JSONArray)) 
     } else {
         JSONArray.nextPageToken = analyze_json.nextPageToken // 배열도 객체다. 속성 따로 넣을 수 있다.
         const items = analyze_json.items
@@ -32,7 +34,7 @@ exports.analyzeJSON = function(body, serverResponse) {
                 console.log('Failed to process');
             } else {
                 serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
-                serverResponse.end(JSON.stringify(JSONArray))
+                serverResponse.end(JSON.stringify(JSONArray))  
             }
         });
     }
