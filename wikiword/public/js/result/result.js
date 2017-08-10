@@ -38,8 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a class="youtube-title" href='https://www.youtube.com/watch?v=${item.video_id}'>
                   ${item.title}
                 </a>
+               <div>
                 <youtube-date>${newDateForm(now - new Date(item.pubDate).getTime())}</youtube-date>
+                <youtube-viewCount> · 조회수 :  ${item.viewCount}</youtube-viewCount>
+               </div>
+               <div>
+                 <youtube-channelTitle>게시자 :  ${item.channelTitle}</youtube-channelTitle>
+               </div>
               </div>
+          
             </div>`
   })
 

@@ -27,12 +27,14 @@
   display: inline-block;
 }
 .youtube-text{
-  padding:0px 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
 }
 
 .youtube-title{
   font-size: 14pt;
-  display: inline-block;
+  display: block;
+  padding-bottom: 10px;
 }
 .youtube-title:hover{
   text-decoration: underline;
@@ -40,5 +42,15 @@
 
 youtube-date{
   font-size: 9pt;
+  color: gray;
+}
+
+youtube-viewCount{
+  font-size: 9pt;
+  color: gray;
+}
+
+youtube-channelTitle{
+   font-size: 9pt;
   color: gray;
 }
