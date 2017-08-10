@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`
   })
 
-  getJSONData({port: 21300, title: 'pinterest', pageNum: ''}, (item) => {
-    return `<a href="${item.image_url}"><img src="${item.image_url}"/></a>`
+  getJSONData({port: 21300, title: 'image', pageNum: 1}, (item) => {
+    return `<a href="${item.src}"><img src="${item.src}"/></a>`
   })
 
   getJSONData({port: 21400, title: 'youtube', pageNum: ''}, (item) => {
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                  <youtube-description> ${item.description}</youtube-description>
                </div>
               </div>
-          
             </div>`
   })
 

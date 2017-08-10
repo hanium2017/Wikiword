@@ -21,7 +21,7 @@ app.get('/pinterest', (request, response) => {
         const object = {}
         let imgTag = jQuery(this)
         // object.link = 'https://www.pinterest.co.kr' + $(this).attr('href');
-        object.image_url = imgTag.attr('src')
+        object.src = imgTag.attr('src')
         object.text = imgTag.attr('alt')
         json_items.push(object)
       })
@@ -33,4 +33,4 @@ app.get('/pinterest', (request, response) => {
   })
 })
 
-exports.app = app
+// exports.app = app

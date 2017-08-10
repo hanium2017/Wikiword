@@ -26,7 +26,8 @@ function rendering (object, predicate) {
   if (items[0].hasOwnProperty('message')) {
     element.innerHTML = '<h1>' + items[0].message + '</h1>'
   } else {
-    for (let item of items) element.innerHTML += predicate(item)
+    for (let item of items) 
+      element.innerHTML += predicate(item)
   }
 }
 

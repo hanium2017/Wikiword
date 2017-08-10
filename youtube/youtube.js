@@ -5,7 +5,7 @@ const request = require('request'),
 exports.analyzeJSON = function(body, serverResponse) {
     const analyze_json = JSON.parse(body),
         JSONArray = []
-    console.log(body);
+
     if (analyze_json.items.length === 0) {
         JSONArray.push({ 'message': '검색 된 자료가 없습니다.' })
         serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
