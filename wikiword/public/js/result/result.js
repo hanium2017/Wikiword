@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
                <div>
                  <youtube-channelTitle>게시자 :  ${item.channelTitle}</youtube-channelTitle>
                </div>
+               <div>
+                 <youtube-description> ${item.description}</youtube-description>
+               </div>
               </div>
           
             </div>`

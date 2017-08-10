@@ -24,6 +24,7 @@ exports.analyzeJSON = function(body, serverResponse) {
                     object.pubDate = item.snippet.publishedAt
                     object.thumbnail = item.snippet.thumbnails.medium.url
                     object.channelTitle = item.snippet.channelTitle
+                    object.description = item.snippet.description  
                     JSONArray.push(object)
                 } else {
                     console.log('Error = ' + serverResponse.status(response.statusCode).end())

@@ -29,28 +29,20 @@
 .youtube-text{
   margin-left: 10px;
   padding: 5px 10px;
+  font-size: 9pt;
+  color: gray;
 }
 
 .youtube-title{
   font-size: 14pt;
   display: block;
-  padding-bottom: 10px;
+  padding-bottom: 7px;
 }
 .youtube-title:hover{
   text-decoration: underline;
 }
 
-youtube-date{
-  font-size: 9pt;
-  color: gray;
+.youtube-text div {
+  padding: 5px 0px;
 }
 
-youtube-viewCount{
-  font-size: 9pt;
-  color: gray;
-}
-
-youtube-channelTitle{
-   font-size: 9pt;
-  color: gray;
-}
