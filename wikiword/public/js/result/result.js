@@ -56,7 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   getJSONData({port: 21600, title: 'dbpia', pageNum: 1}, (item) => {
     return `<div class="dbpia"><a class="dbpia-title" href="${item.link_url}">${item.title}</a>
-           <dbpia-pages>${item.pages}</dbpia-pages>
-           <dbpia-date>${item.pubDate}</dbpia-date></div>`
+            <dbpia-authors>${item.authors}</dbpia-authors>
+            <dbpia-pages>${item.publisher}, ${item.publication}, ${item.pubDate}, ${item.pages}</dbpia-pages>
+
+           `
+            //  <dbpia-publisher>${item.publisher}</dbpia-publisher>
+            // <dbpia-publication>${item.publication}</dbpia-publication>
+            //<dbpia-date>${item.pubDate}</dbpia-date></div>
   })
 })
