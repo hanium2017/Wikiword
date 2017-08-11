@@ -1,10 +1,11 @@
 
-
-.book-div{
-  display: inline-block;
-  margin: 20px;
-  max-width: 800px;
-  width: 90vw;
+.book-region{
+    display: inline-block;
+    background-color: white;
+    margin: 20px;
+    max-width: 800px;
+    width: 90vw;
+    text-align: center;
 }
 
 .book{

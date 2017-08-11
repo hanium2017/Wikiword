@@ -1,10 +1,11 @@
 
-
-.twitter-div{
-  display: inline-block;
-  margin: 20px;
-  max-width: 800px;
-  width: 90vw;
+.twitter-region{
+    display: inline-block;
+    background-color: white;
+    margin: 20px;
+    max-width: 800px;
+    width: 90vw;
+    text-align: center;
 }
 
 .twitter{
@@ -16,7 +17,6 @@
   border-bottom: 1px solid #f0f0f0;
   display: flex;
   flex-direction: row;
-
 }
 
 .twitter-img > img{

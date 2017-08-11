@@ -21,7 +21,7 @@ function rendering(object, predicate) {
     const items = object.json
     let title = object.title
     let element = document.querySelector('.' + title + '-div')
-    let moreBtnElement = document.querySelector('button.' + title + '-more')
+    let moreBtnElement = document.querySelector('input.' + title + '-more')
 
 
     // 검색어 입력하면 새로 request 됨
@@ -33,19 +33,19 @@ function rendering(object, predicate) {
     } else {
 
         if (title == 'youtube') {
-          
+
             if (items.length > 5) {
                 let nextToken = items.pop();
                 moreBtnElement.setAttribute('nextNum', nextToken);
             } else {
                 moreBtnElement.style.display = none;
             }
-      
+
         } else if (title != ('wikipedia' || 'youtube')) {
-      
-           let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1;
-           moreBtnElement.setAttribute('nextNum', temp);
-      
+
+            let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1;
+            moreBtnElement.setAttribute('nextNum', temp);
+
         }
 
         for (let item of items) {
