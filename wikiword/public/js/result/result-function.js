@@ -23,11 +23,13 @@ function getJSONData(object, callback) {
   3. 실제 렌더링 함수
  */
 function contentRender(title, items) {
-    let element = document.querySelector('.' + title + '-div')
+    let element = document.querySelector('.' + title + '-div'),
+        moreBtnElement = document.querySelector('input.' + title + '-more')
     if (items[0].hasOwnProperty('message')) {
+        moreBtnElement.style.display = 'none';
         element.innerHTML = '<h1>' + items[0].message + '</h1>'
     } else {
-        moreBtnRender(title, items)
+        moreBtnRender(moreBtnElement, title, items)
         for (let item of items) element.innerHTML += template(title, item)
     }
 }
@@ -36,15 +38,15 @@ function contentRender(title, items) {
 /*
     4. 더 보기 버튼 이벤트 세팅 및 렌더링
  */
-function moreBtnRender(title, items) {
-    let moreBtnElement = document.querySelector('input.' + title + '-more')
+function moreBtnRender(moreBtnElement, title, items) {
+   
     if (title == 'youtube') {
         // 유튜브는 다음 데이터에 대한 토큰이 따로 있다.
         if (items.length > 5) {
             let nextToken = items.pop();
             moreBtnElement.setAttribute('nextNum', nextToken);
         } else {
-            moreBtnElement.style.display = none;
+            moreBtnElement.style.display = 'none';
         }
     } else if (title != ('wikipedia' || 'youtube')) {
         let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1;
