@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return `<div class="twitter">
               <a class="twitter-img" ${setHref(item.url)} target="_blank}"><img src="${item.profile_image_url}"/></a>
               <div class="twitter-text">
-                <twitter-text>${item.text}</twitter-text>
+                 <a class="twitter-img" ${setHref(item.url)} target="_blank}"><twitter-text>${item.text}</twitter-text></a>
                 <twitter-name>${item.name}</twitter-name>
                 <twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date>
               </div>
