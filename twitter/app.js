@@ -22,7 +22,7 @@ app.get('/twitter', (req, res) => {
       items = result.statuses
 
     if (items.length === 0) {
-      JSONArray.push({'message': '검색 된 자료가 없습니다.'})
+      JSONArray.push({'message': '찾는 내용이 없습니다.'})
     } else {
       for (let item of items) {
         if (item != undefined) {

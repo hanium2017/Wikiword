@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
 {% include "./result/result-head.html" %}
+
 <body>
-  <div class="title-div">
-    <a href='/'>
-      <h1><red>Wi</red><yellow>ki</yellow><blue>word</blue></h1></a>
-  </div>
-  <div class="search-div">
-    <input type="text" class="input-search" />
-    <span></span>
-    <div class="search_icon">
+    <div id="loading">
+      <div id="loading-image">
+        <div><img  src="../images/loading.gif" alt="Loading..." /></div>
+        <div><h2>Loading</h2></div>
+      </div>    
     </div>
-  </div>
+    <div class="title-div">
+        <a href='/'>
+            <h1><red>Wi</red><yellow>ki</yellow><blue>word</blue></h1></a>
+    </div>
 
-  <div class="blank_div"></div>
-  <hr />
-
-  {% include "./result/result-content.html" %}
-
+    <div class="search-div">
+        <input type="text" class="input-search" />
+        <span></span>
+        <div class="search_icon">
+        </div>
+    </div>
+    <div class="blank_div"></div>
+    <hr /> {% include "./result/result-content.html" %}
 </body>
 
 </html>

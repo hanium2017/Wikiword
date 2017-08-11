@@ -7,7 +7,7 @@ exports.analyzeJSON = function(body, serverResponse) {
         JSONArray = []
 
     if (analyze_json.items.length === 0) {
-        JSONArray.push({ 'message': '검색 된 자료가 없습니다.' })
+        JSONArray.push({ 'message': '찾는 동영상이 없습니다.' })
         serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
         serverResponse.end(JSON.stringify(JSONArray)) 
     } else {

@@ -3,7 +3,7 @@ exports.analyzeXML = function (xml) {
 
   require('xml2js').parseString(xml, function (err, obj) {
     if (obj.hasOwnProperty('error')) {
-      JSONArray.push({'message': '검색 된 자료가 없습니다.'})
+      JSONArray.push({'message': '검색 된 논문이 없습니다.'})
     } else {
       const items = obj.root.result[0].items[0].item
 

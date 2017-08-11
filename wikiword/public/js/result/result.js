@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   getJSONData({port: 21300, title: 'image', pageNum: 1}, (item) => {
-    return `<a href="${item.src}"><img src="${item.src}"/></a>`
+    return `<a href="${item.href}"><img src="${item.src}"/></a>`
   })
 
   getJSONData({port: 21400, title: 'youtube', pageNum: ''}, (item) => {
@@ -73,4 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // <dbpia-publication>${item.publication}</dbpia-publication>
             //<dbpia-date>${item.pubDate}</dbpia-date></div>
   })
+    
+    setTimeout(function(){
+      document.querySelector('#loading').style.display='none'; 
+    }, 3000)
+ 
+
 })
