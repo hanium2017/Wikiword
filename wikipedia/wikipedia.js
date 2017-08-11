@@ -18,7 +18,7 @@ exports.homonymCrawling = function (jQuery) {
 }
 
 exports.wikiSearchCrawling = function (jQuery) {
-  let str = '', bool = true, pattern = /\[.{1,4}\]]/g, url = 'https://ko.wikipedia.org'
+  let str = '', bool = true, pattern = /\[.{1,4}\]/g, url = 'https://ko.wikipedia.org'
   const JSONArray = [], object = {}
   // object.name = jQuery("#firstHeading").text();
   // object.image_url = jQuery("#mw-content-text .infobox .image img").attr("src");
