@@ -20,16 +20,17 @@
  opacity: 0.8;  
  background-color: #fff;  
  z-index: 99;  
- text-align: center; 
 } 
 
-#loading-image{ 
- position: absolute;  
- display: block;  
- top: 40%;  
- left: 46%; 
- z-index: 100; 
+#loading-image{
+  position: relative;
+  top: 30%;
+  display: inline-block;
+  text-align: center; 
+  z-index: 100; 
 }
+
+
 
 body{
   text-align: center;
