@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   getJSONData({port: 21500, title: 'twitter', pageNum: ''}, (item) => {
     return `<div class="twitter">
-              <a class="twitter-img" href='${item.url}' target="_blank"><img src="${item.profile_image_url}"/></a>
+              <a class="twitter-img" ${setHref(item.url)} target="_blank}"><img src="${item.profile_image_url}"/></a>
               <div class="twitter-text">
                 <twitter-text>${item.text}</twitter-text>
                 <twitter-name>${item.name}</twitter-name>

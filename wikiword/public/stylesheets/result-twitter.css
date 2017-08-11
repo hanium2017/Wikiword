@@ -18,7 +18,9 @@
   flex-direction: row;
 
 }
+
 .twitter-img > img{
+/*  cursor:pointer;*/
   display: inline-block;
   border: 1px solid black;
 }

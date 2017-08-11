@@ -29,7 +29,7 @@ app.get('/twitter', (req, res) => {
           const object = {}
           object.pubDate = item.created_at
           object.text = item.text
-          object.url = (item.entities.hasOwnProperty('media')) ? item.entities.media[0].url : '# onclick=return false'
+          object.url = (item.entities.hasOwnProperty('media')) ? item.entities.media[0].url : 'null'
           object.name = item.user.name
           object.profile_image_url = item.user.profile_image_url
           JSONArray.push(object)

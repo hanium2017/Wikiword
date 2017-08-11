@@ -31,6 +31,13 @@ function rendering (object, predicate) {
   }
 }
 
+function setHref(href){
+    if(href != 'null'){
+      console.log(href);
+      return 'href='+ href
+    }
+}
+
 /*
    이벤트 세팅 함수
  */
