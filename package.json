@@ -33,12 +33,12 @@
     "express-session": "^1.15.3",
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
-    "node-twitter": "^0.5.3",
     "oauth": "^0.9.15",
     "os": "^0.1.1",
     "path": "^0.12.7",
     "request": "^2.81.0",
     "swig": "^1.4.2",
+    "twit": "^2.2.9",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {}

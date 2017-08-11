@@ -11,7 +11,7 @@ exports.analyzeJSON = function(body, serverResponse) {
         serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
         serverResponse.end(JSON.stringify(JSONArray)) 
     } else {
-        JSONArray.nextPageToken = analyze_json.nextPageToken // 배열도 객체다. 속성 따로 넣을 수 있다.
+      
         const items = analyze_json.items
         async.eachSeries(items, function(item, callback) {
             let url = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${item.id.videoId}&key=${google_api}`
@@ -35,6 +35,9 @@ exports.analyzeJSON = function(body, serverResponse) {
             if (err) {
                 console.log('Failed to process');
             } else {
+                if(JSONArray.length == 5){
+                    JSONArray.push(analyze_json.nextPageToken)  // 배열도 객체다. 속성 따로 넣을 수 있다.
+                }
                 serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
                 serverResponse.end(JSON.stringify(JSONArray))  
             }
