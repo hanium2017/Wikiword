@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   getJSONData({port: 21200, title: 'news', pageNum: 1}, (item) => {
-    return `<div class="news"><a class="news-title" href="${item.link}">${item.title}</a>
+    return `<div class="news"><a class="news-title" href="${item.link}" target="_blank">${item.title}</a>
                      <news-description>${item.description}</news-description>
                      <news-date>${newDateForm(now - new Date(item.pubDate).getTime())}</news-date>
                      </div>`
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return `<div class="book">
               <img src="${item.image}"/>
               <div class="book-text">
-                <a class="book-title" href="${item.link}">${item.title}</a>
+                <a class="book-title" href="${item.link}" target="_blank">${item.title}</a>
                 <book-description>${item.description}</book-description>
                 <book-date>${item.pubdate.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3').replace(/-/g, '-')}</book-date>
               </div>
@@ -26,16 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   getJSONData({port: 21300, title: 'image', pageNum: 1}, (item) => {
-    return `<a href="${item.href}"><img src="${item.src}"/></a>`
+    return `<a href="${item.href}" target="_blank"><img src="${item.src}"/></a>`
   })
 
   getJSONData({port: 21400, title: 'youtube', pageNum: ''}, (item) => {
     return `<div class="youtube">
-              <a class="youtube-img" href='https://www.youtube.com/watch?v=${item.video_id}'>
+              <a class="youtube-img" href='https://www.youtube.com/watch?v=${item.video_id}' target="_blank">
                 <img src="${item.thumbnail}"/>
               </a>
               <div class="youtube-text">
-                <a class="youtube-title" href='https://www.youtube.com/watch?v=${item.video_id}'>
+                <a class="youtube-title" href='https://www.youtube.com/watch?v=${item.video_id}' target="_blank">
                   ${item.title}
                 </a>
                <div>
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   getJSONData({port: 21500, title: 'twitter', pageNum: ''}, (item) => {
     return `<div class="twitter">
-              <a class="twitter-img" href='${item.url}'><img src="${item.profile_image_url}"/></a>
+              <a class="twitter-img" href='${item.url}' target="_blank"><img src="${item.profile_image_url}"/></a>
               <div class="twitter-text">
                 <twitter-text>${item.text}</twitter-text>
                 <twitter-name>${item.name}</twitter-name>
@@ -64,14 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   getJSONData({port: 21600, title: 'dbpia', pageNum: 1}, (item) => {
-    return `<div class="dbpia"><a class="dbpia-title" href="${item.link_url}">${item.title}</a>
+    return `<div class="dbpia"><a class="dbpia-title" href="${item.link_url}" target="_blank">${item.title}</a>
             <dbpia-authors>${item.authors}</dbpia-authors>
             <dbpia-pages>${item.publisher}, ${item.publication}, ${item.pubDate}, ${item.pages}</dbpia-pages>
-
            `
-            //  <dbpia-publisher>${item.publisher}</dbpia-publisher>
-            // <dbpia-publication>${item.publication}</dbpia-publication>
-            //<dbpia-date>${item.pubDate}</dbpia-date></div>
   })
     
     setTimeout(function(){

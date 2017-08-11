@@ -31,6 +31,7 @@ exports.wikiSearchCrawling = function (jQuery) {
         // 여기서 anchorElement는 ptag안 a태그 자신을 가리킨다.
         let anchorElement = jQuery(this)
         anchorElement.attr('href', url + anchorElement.attr('href'))
+        anchorElement.attr('target','_blank')
       })
       str += pTag.html().replace(pattern, '')
     }
