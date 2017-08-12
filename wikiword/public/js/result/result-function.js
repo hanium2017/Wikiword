@@ -41,6 +41,8 @@ function contentRender(title, items) {
     } else {
         if (title !== 'wikipedia')
             moreBtnRender(moreBtnElement, title, items)
+
+        console.log(items);
         for (let item of items)
             element.innerHTML += template(title, item)
     }
@@ -78,7 +80,7 @@ function moreBtnRender(moreBtnElement, title, items) {
 
 
     if (title === 'youtube') {
-        if (items.length < 6) {
+        if (items.length !== 6) {
             moreBtnElement.style.display = 'none'
         } else {
             moreBtnElement.setAttribute('nextNum', items.pop())
