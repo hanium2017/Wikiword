@@ -46,6 +46,8 @@ function contentRender(title, items) {
         for (let item of items)
             element.innerHTML += template(title, item)
     }
+
+    setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 2000)
 }
 
 function moreContentRender(title, items) {
