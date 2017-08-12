@@ -5,7 +5,10 @@ function renderInfoAjax(getJSONData) {
     axios.post(`http://${host}:3000/rendering`)
         .then((response) => {
             const items = response.data
-            for (let item of items) { getJSONData(item, contentRender) }
+            for (let item of items) { 
+                item.eventType = 'all'
+                getJSONData(item, contentRendering) 
+            }
         })
 }
 
@@ -15,7 +18,8 @@ function moreAjax(object, getJSONData) {
     axios.post(`http://${host}:3000/more`, { title: object.title })
         .then((response) => {
             object.port = response.data.port
-            getJSONData(object, moreContentRender)
+            object.eventType = 'more'
+            getJSONData(object, contentRendering)
         })
 }
 
@@ -24,106 +28,51 @@ function moreAjax(object, getJSONData) {
  */
 function getJSONData(object, rendering) {
     axios.get(`http://${host}:${object.port}/${object.title}?search=${data}&pageNum=${object.pageNum}`)
-        .then((response) => { rendering(object.title, response.data) })
+        .then((response) => { rendering(object, response.data) })
         .catch((err) => { console.error(err) })
 }
 
 /*
   3. 실제 렌더링 함수
  */
-function contentRender(title, items) {
-    let element = document.querySelector('.' + title + '-div'),
+function contentRendering(object, items) {
+
+    let title = object.title,
+        element = document.querySelector('.' + title + '-div'),
         moreBtnElement = document.querySelector('input.' + title + '-more')
-
+    
     if (items[0].hasOwnProperty('message')) {
-        element.innerHTML = '<div>' + items[0].message + '</div>'
-        if (title !== 'wikipedia') moreBtnElement.style.display = 'none'
-    } else {
-        if (title !== 'wikipedia')
-            moreBtnRender(moreBtnElement, title, items)
 
-        for (let item of items)
+        if (title !== 'wikipedia'){
+           moreBtnElement.style.display = 'none'
+        } 
+        
+        (object.eventType == 'all')? element.innerHTML = '<div>' + items[0].message + '</div>' : alert(items[0].message)
+    
+    } else {
+
+        if (title !== 'wikipedia') {
+            if (title === 'youtube') {
+                if (items.length !== 6) {
+                    moreBtnElement.style.display = 'none'
+                } else {
+                    moreBtnElement.setAttribute('nextNum', items.pop())
+                }
+            } else {
+                if (items.length < 5) {
+                    moreBtnElement.style.display = 'none'
+                } else {
+                    let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
+                    moreBtnElement.setAttribute('nextNum', temp)
+                }
+            }
+        }
+
+        for (let item of items) 
             element.innerHTML += template(title, item)
     }
-
-    setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 2000)
-}
-
-
-
-/*
- 더 보기 클릭시 렌더링 처리할 함수
- */
-function moreContentRender(title, items) {
-    // more 버튼 있는 것만 실행 된다. wikipedia는 없다.
-    let element = document.querySelector('.' + title + '-div'),
-        moreBtnElement = document.querySelector('input.' + title + '-more')
-
-    // 유튜브는 예외 처리가 필요하다. next 토큰이 따로 있음
-    if (items[0].hasOwnProperty('message')) {
-        moreBtnElement.style.display = 'none'
-        alert(items[0].message)
-    } else {
-
-        if (title === 'youtube') {
-
-            if (items.length !== 6) {
-                moreBtnElement.style.display = 'none'
-            } else {
-                moreBtnElement.setAttribute('nextNum', items.pop())
-            }
-
-        } else {
-
-            if (items.length < 5) {
-                moreBtnElement.style.display = 'none'
-            } else {
-                let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
-                moreBtnElement.setAttribute('nextNum', temp)
-            }
-
-        }
-
-        for (let item of items) {
-            element.innerHTML += template(title, item)
-        }
-    }
-
-    document.querySelector('#loading').style.display = 'none'
-}
-
-
-/*
-    4. 더 보기 버튼 이벤트 버튼 렌더링 (처음 검색시에만 실행된다.)
- */
-function moreBtnRender(moreBtnElement, title, items) {
-
-    if (title === 'youtube') {
-
-        if (items.length !== 6) {
-            moreBtnElement.style.display = 'none'
-        } else {
-            moreBtnElement.setAttribute('nextNum', items.pop())
-        }
-
-    } else {
-        if (items.length < 5) {
-            moreBtnElement.style.display = 'none'
-        } else {
-            moreBtnElement.setAttribute('nextNum', '2')
-        }
-
-    }
-    // 더보기 버튼 이벤트 로직 추가
-    moreBtnElement.addEventListener('click', (e) => {
-        let target = e.target
-        const object = {
-            title: target.getAttribute('title'),
-            pageNum: target.getAttribute('nextNum'),
-            search: document.querySelector('.input-search').value
-        }
-        moreAjax(object, getJSONData)
-    })
+    
+    setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 1500)
 }
 
 /*
@@ -165,6 +114,7 @@ function setHref(href) {
    이벤트 세팅 함수
  */
 function resultEventSetting() {
+
     let search = document.querySelector('.input-search')
     search.value = data
 
@@ -180,4 +130,17 @@ function resultEventSetting() {
     search.addEventListener('keyup', e => {
         if (e.keyCode === 13) location.href = (`/result?query=${search.value}`)
     })
+
+    //  더보기 버튼에 이벤트 붙이기
+    document.querySelectorAll('.more').forEach(moreBtn => {
+        moreBtn.addEventListener('click', function(e) {
+            let target = e.target
+            const object = {
+                title: target.getAttribute('title'),
+                pageNum: target.getAttribute('nextNum'),
+                search: document.querySelector('.input-search').value
+            }
+            moreAjax(object, getJSONData)
+        });
+    });
 }
