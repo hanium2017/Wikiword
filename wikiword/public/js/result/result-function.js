@@ -20,15 +20,16 @@ function moreAjax(object, getJSONData) {
             object.port = response.data.port
             object.eventType = 'more'
             getJSONData(object, contentRendering)
+            setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 1500)
         })
 }
 
 /*
   2. 뉴스, 도서, dbpia, youtube, twitter 등 데이터를 얻어 렌더링 함수를 실행
  */
-function getJSONData(object, rendering) {
+function getJSONData(object, contentRendering) {
     axios.get(`http://${host}:${object.port}/${object.title}?search=${data}&pageNum=${object.pageNum}`)
-        .then((response) => { rendering(object, response.data) })
+        .then((response) => { contentRendering(object, response.data) })
         .catch((err) => { console.error(err) })
 }
 
@@ -71,8 +72,6 @@ function contentRendering(object, items) {
         for (let item of items) 
             element.innerHTML += template(title, item)
     }
-    
-    setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 1500)
 }
 
 /*
