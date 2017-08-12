@@ -34,15 +34,14 @@ function getJSONData(object, rendering) {
 function contentRender(title, items) {
     let element = document.querySelector('.' + title + '-div'),
         moreBtnElement = document.querySelector('input.' + title + '-more')
+
     if (items[0].hasOwnProperty('message')) {
         element.innerHTML = '<div>' + items[0].message + '</div>'
-        if (title !== 'wikipedia')
-            moreBtnElement.style.display = 'none'
+        if (title !== 'wikipedia') moreBtnElement.style.display = 'none'
     } else {
         if (title !== 'wikipedia')
             moreBtnRender(moreBtnElement, title, items)
 
-        console.log(items);
         for (let item of items)
             element.innerHTML += template(title, item)
     }
@@ -56,17 +55,18 @@ function moreContentRender(title, items) {
         moreBtnElement = document.querySelector('input.' + title + '-more')
 
     // 유튜브는 예외 처리가 필요하다. next 토큰이 따로 있음
-    if (title === 'youtube') {
-        moreBtnElement.setAttribute('nextNum', items.pop())
-    } else {
-        let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
-        moreBtnElement.setAttribute('nextNum', temp)
-    }
-
     if (items[0].hasOwnProperty('message')) {
         moreBtnElement.style.display = 'none'
         alert(items[0].message)
     } else {
+
+        if (title === 'youtube') {
+            moreBtnElement.setAttribute('nextNum', items.pop())
+        } else {
+            let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
+            moreBtnElement.setAttribute('nextNum', temp)
+        }
+
         for (let item of items) {
             element.innerHTML += template(title, item)
         }
@@ -79,7 +79,6 @@ function moreContentRender(title, items) {
     4. 더 보기 버튼 이벤트 버튼 렌더링
  */
 function moreBtnRender(moreBtnElement, title, items) {
-
 
     if (title === 'youtube') {
         if (items.length !== 6) {

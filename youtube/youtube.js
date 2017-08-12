@@ -28,8 +28,9 @@ exports.analyzeJSON = function(body, serverResponse) {
         if (err) {
             console.log('Failed to process')
         } else {
-            if (JSONArray.length == 5) {
-                JSONArray.push(analyze_json.nextPageToken) // 배열도 객체다. 속성 따로 넣을 수 있다.
+
+            if (JSONArray.length == 5){
+                JSONArray.push(analyze_json.nextPageToken) 
             }
             serverResponse.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
             serverResponse.end(JSON.stringify(JSONArray))
