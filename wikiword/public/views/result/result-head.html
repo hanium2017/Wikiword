@@ -1,5 +1,6 @@
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
   <title>검색 결과 : {{ data }}</title>
   <link rel="stylesheet" href="/stylesheets/result.css" />
   <link rel="stylesheet" href="/stylesheets/result-youtube.css" />
@@ -7,11 +8,10 @@
   <link rel="stylesheet" href="/stylesheets/result-twitter.css" />
   <link rel="stylesheet" href="/stylesheets/result-wikipedia.css" />
   <link rel="stylesheet" href="/stylesheets/result-dbpia.css"  />
-    <link rel="stylesheet" href="/stylesheets/result-image.css"  />
-  <script src="/js/common/axios.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/result-image.css"  />
   <script> var data = "{{ data }}";  var now = new Date().getTime(); var host = "{{ host }}"</script>
+  <script src="/js/common/axios.min.js"></script>
   <script src="/js/common/common.js"></script>
-  <script src="/js/result/result-function.js"></script>
   <script src="/js/result/result.js"></script>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+  <script>document.addEventListener('DOMContentLoaded', () => { resultPageSetting() })</script>
 </head>
