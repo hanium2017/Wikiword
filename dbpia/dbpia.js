@@ -10,13 +10,13 @@ exports.analyzeXML = function (xml) {
       for (let item of items) {
         const object = {}
         object.title = item.title[0].replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, '')
-        object.authors = [];
+        object.authors = []
 
         let authors = item.authors[0].author
-        for(let author of authors){
+        for (let author of authors) {
           object.authors.push(author.name[0])
         }
-        
+
         object.pages = (item.hasOwnProperty('pages')) ? item.pages[0] : ''
         object.pubDate = (item.issue[0].hasOwnProperty('yymm')) ? item.issue[0].yymm[0] : ''
         object.link_url = item.link_url[0]

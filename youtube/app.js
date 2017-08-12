@@ -12,7 +12,7 @@ app.get('/youtube', function (req, res, next) {
 
   request(url, function (err, response, body) {
     if (!err && response.statusCode == 200) {
-        youtube.analyzeJSON(body, res);
+      youtube.analyzeJSON(body, res)
     } else {
       console.log('Error = ' + res.status(response.statusCode).end())
     }
