@@ -1,1 +1,1 @@
-document.addEventListener('DOMContentLoaded', () => { eventSetting(), renderInfoAjax(getJSONData) })
+document.addEventListener('DOMContentLoaded', () => { resultEventSetting(), renderInfoAjax(getJSONData) })

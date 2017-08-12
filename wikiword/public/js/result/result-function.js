@@ -146,7 +146,7 @@ function setHref(href) {
 /*
    이벤트 세팅 함수
  */
-function eventSetting() {
+function resultEventSetting() {
     let search = document.querySelector('.input-search')
     search.value = data
 
