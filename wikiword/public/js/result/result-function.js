@@ -49,6 +49,11 @@ function contentRender(title, items) {
     setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 2000)
 }
 
+
+
+/*
+ 더 보기 클릭시 렌더링 처리할 함수
+ */
 function moreContentRender(title, items) {
     // more 버튼 있는 것만 실행 된다. wikipedia는 없다.
     let element = document.querySelector('.' + title + '-div'),
@@ -61,10 +66,22 @@ function moreContentRender(title, items) {
     } else {
 
         if (title === 'youtube') {
-            moreBtnElement.setAttribute('nextNum', items.pop())
+
+            if (items.length !== 6) {
+                moreBtnElement.style.display = 'none'
+            } else {
+                moreBtnElement.setAttribute('nextNum', items.pop())
+            }
+
         } else {
-            let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
-            moreBtnElement.setAttribute('nextNum', temp)
+
+            if (items.length < 5) {
+                moreBtnElement.style.display = 'none'
+            } else {
+                let temp = parseInt(moreBtnElement.getAttribute('nextNum')) + 1
+                moreBtnElement.setAttribute('nextNum', temp)
+            }
+
         }
 
         for (let item of items) {
@@ -75,12 +92,14 @@ function moreContentRender(title, items) {
     document.querySelector('#loading').style.display = 'none'
 }
 
+
 /*
-    4. 더 보기 버튼 이벤트 버튼 렌더링
+    4. 더 보기 버튼 이벤트 버튼 렌더링 (처음 검색시에만 실행된다.)
  */
 function moreBtnRender(moreBtnElement, title, items) {
 
     if (title === 'youtube') {
+
         if (items.length !== 6) {
             moreBtnElement.style.display = 'none'
         } else {
