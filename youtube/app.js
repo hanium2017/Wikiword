@@ -12,7 +12,14 @@ app.get('/youtube', function (req, res, next) {
 
   request(url, function (err, response, body) {
     if (!err && response.statusCode == 200) {
-      youtube.analyzeJSON(body, res)
+      const requestBody = JSON.parse(body)
+      if(requestBody.items.length == 0){
+         res.writeHead(200, { 'Content-Type': 'text/json;charset=utf-8' })
+         res.end(JSON.stringify([{ 'message': '찾는 동영상이 없습니다.' }]))
+      } else {
+         youtube.analyzeJSON(requestBody, res)
+      }
+     
     } else {
       console.log('Error = ' + res.status(response.statusCode).end())
     }
