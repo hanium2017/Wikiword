@@ -20,12 +20,14 @@ exports.analyzeXML = function(xml) {
                             object.authors.push(author.name[0])
                         }
                     }
-
-                    object.pages = (item.hasOwnProperty('pages')) ? item.pages[0] : ''
-                    object.pubDate = (item.issue[0].hasOwnProperty('yymm')) ? item.issue[0].yymm[0] : ''
+                    
+                    object.pages = (item.hasOwnProperty('pages')) ? item.pages[0] : undefined
+                    object.pubDate = (item.issue[0].hasOwnProperty('yymm')) ? item.issue[0].yymm[0] : undefined
                     object.link_url = item.link_url[0]
-                    object.publisher = item.publisher[0].name[0]
-                    object.publication = item.publication[0].name[0]
+            
+                    object.publisher = (item.publisher[0].hasOwnProperty('name')) ? item.publisher[0].name[0] : undefined
+                    object.publication = (item.publication[0].hasOwnProperty('name')) ? item.publication[0].name[0] :undefined
+
                     JSONArray.push(object)
                 }
             } else {

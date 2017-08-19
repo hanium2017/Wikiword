@@ -102,7 +102,7 @@ function template(title, item) {
             template = `<div class=twitter><a class=twitter-img ${setHref(item.url)} target=_blank}><img src=${item.profile_image_url}/></a><div class=twitter-text><a class=twitter-img ${setHref(item.url)} target=_blank}><twitter-text>${item.text}</twitter-text></a><twitter-name>${item.name}</twitter-name><twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date></div></div>`
             break
         default:
-            template = `<div class=dbpia><a class=dbpia-title href=${item.link_url}target=_blank>${item.title}</a><dbpia-authors>${item.authors}</dbpia-authors><dbpia-pages>${item.publisher}, ${item.publication}, ${item.pubDate}, ${item.pages}</dbpia-pages>`
+            template = `<div class=dbpia><a class=dbpia-title href=${item.link_url}target=_blank>${item.title}</a><dbpia-authors>${item.authors}</dbpia-authors><dbpia-pages>${undefinedCheck(item.publisher)} ${undefinedCheck(item.publication)} ${undefinedCheck(item.pubDate)} ${undefinedCheck(item.pages)}</dbpia-pages>`
     }
     return template
 }
@@ -111,6 +111,11 @@ function template(title, item) {
 /* 트위터 링크 존재 여부 판단 함수 */
 function setHref(href) {
     if (href != 'null') return 'href=' + href
+}
+
+function undefinedCheck(temp){
+    if(temp != undefined) return temp + '&nbsp';
+    else return ''
 }
 
 /*
