@@ -1,24 +1,24 @@
-img{
-   width: auto; height: auto;
-   max-width: 300px;
-   max-height: 200px;
-   margin : 5px 10px;
+img {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    max-height: 200px;
+    margin: 5px 10px;
 }
 
 
 
-.image-region{
-  display: inline-block;
-  /*flex-direction: column;
+.image-region {
+    display: inline-block;
+    /*flex-direction: column;
   justify-content: center;
   align-items: center;*/
-  max-width: 800px;
-  width: 90vw;
-      background-color: white;
-
+    max-width: 800px;
+    width: 90vw;
+    background-color: white;
 }
 
-.image-div{
-  background-color: white;
-  padding: 20px 0px;
+.image-div {
+    background-color: white;
+    padding: 20px 0px;
 }

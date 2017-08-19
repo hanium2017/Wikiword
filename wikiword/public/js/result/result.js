@@ -9,7 +9,9 @@ function renderInfoAjax(getJSONData) {
                 item.eventType = 'all'
                 getJSONData(item, contentRendering)
             }
+            setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 2500)
         })
+
 }
 
 //## 더 보기 클릭시 실행할 ajax 함수
@@ -146,6 +148,4 @@ function resultPageSetting() {
     search.addEventListener('keyup', e => {
         if (e.keyCode === 13) location.href = (`/result?query=${search.value}`)
     })
-
-    setTimeout(() => { document.querySelector('#loading').style.display = 'none' }, 1500)
 }
