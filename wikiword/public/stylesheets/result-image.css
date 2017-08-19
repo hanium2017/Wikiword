@@ -15,4 +15,10 @@ img{
   max-width: 800px;
   width: 90vw;
       background-color: white;
+
+}
+
+.image-div{
+  background-color: white;
+  padding: 20px 0px;
 }

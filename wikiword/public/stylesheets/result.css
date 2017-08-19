@@ -222,3 +222,11 @@ news-date {
     box-sizing: border-box;
     cursor: pointer;
 }
+
+.content-title{
+  text-align:left;
+  margin-left: 40px; font-size: 20pt;
+  padding-top:20px;
+  font-weight: bold;
+  
+}

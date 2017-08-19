@@ -23,11 +23,17 @@
 
 .youtube > img{
   display: inline-block;
+
 }
 .youtube-img{
   display: inline-block;
+
+}
+.youtube-img > img{
+
 }
 .youtube-text{
+
   max-width: 400px;
   margin-left: 10px;
   padding: 5px 10px;
@@ -46,4 +52,10 @@
 
 .youtube-text div {
   padding: 5px 0px;
+}
+
+youtube-description{
+  display: inline-block;
+  width: 100%;
+  word-break:break-all;
 }
