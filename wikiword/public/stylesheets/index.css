@@ -211,9 +211,10 @@ body {
 }
 
 .keyboard {
-    /*width: 90vw;
-  max-width: 450px;*/
-    width: 0px;
+    width: 90vw;
+  max-width: 450px;
+  padding-left: 20px;
+  padding-right: 20px;
     padding-top: 12px;
     padding-bottom: 12px;
     font-size: 12pt;
@@ -223,8 +224,8 @@ body {
     transition: all 1s;
 }
 
-.long {
+/*.long {
     width: 450px;
     padding-left: 20px;
     padding-right: 20px;
-}
+}*/

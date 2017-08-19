@@ -8,8 +8,11 @@ img{
 
 
 .image-region{
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  /*flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+  max-width: 800px;
+  width: 90vw;
+      background-color: white;
 }
