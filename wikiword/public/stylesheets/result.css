@@ -212,6 +212,13 @@ news-date {
     max-width: 700px;
     width: 70vw;
     font-weight: bold;
+    padding: 10px 0px;
+    background-color: #2496dc;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 12pt;
+    border-bottom: 2px solid #128bd1;
+    box-sizing: border-box;
+    cursor: pointer;
 }
-
-

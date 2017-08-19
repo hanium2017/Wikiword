@@ -49,7 +49,7 @@ function contentRendering(object, items) {
         }
 
         (object.eventType == 'all') ?
-        element.innerHTML = '<div>' + items[0].message + '</div>': alert(items[0].message)
+        element.innerHTML = '<div style="padding: 20px 0px;text-align:center;color: #bbb; font-weight: bold;"><img src="../images/main_logo0.svg" style="width: 300px;height: auto;display: inline-block;"/><br>' + items[0].message + '</div>': alert(items[0].message)
 
     } else {
 
