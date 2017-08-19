@@ -18,6 +18,7 @@
   border-bottom: 1px solid #f0f0f0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .youtube > img{
@@ -27,6 +28,7 @@
   display: inline-block;
 }
 .youtube-text{
+  max-width: 400px;
   margin-left: 10px;
   padding: 5px 10px;
   font-size: 9pt;
@@ -45,4 +47,3 @@
 .youtube-text div {
   padding: 5px 0px;
 }
-

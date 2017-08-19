@@ -12,13 +12,20 @@
 body {
     background-color: #636efc;
     font-family: NanumSquare;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 
 /*-----------------------------------------*/
 
 .header-div {
-    position: relative;
+    position: fixed;
+    top:0; left: 0;
     display: inline-block;
     width: 100vw;
     height: 50px;
@@ -187,8 +194,7 @@ body {
 
 .main_div {
     text-align: center;
-    padding-top: 190px;
-    padding-bottom: 30px;
+
 }
 
 .main_div img {
@@ -208,6 +214,7 @@ body {
 
 .search_div {
     text-align: center;
+    padding-top: 20px;
 }
 
 .keyboard {
