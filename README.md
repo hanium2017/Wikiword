@@ -11,7 +11,6 @@
 
 # UI
 
-## - Web UI
 ![wikiword_image](./readme/images/web_image01.png) &nbsp;&nbsp;
 ![wikiword_image](./readme/images/web_image02.png)
 
@@ -19,7 +18,6 @@
 ![wikiword_image](./readme/images/web_image04.png)
 
 <br/>
-## - Mobile UI
 ![mobile_image](./readme/images/mobile_image01.jpg) &nbsp;&nbsp;
 ![mobile_image](./readme/images/mobile_image02.jpg) &nbsp;&nbsp;
 ![mobile_image](./readme/images/mobile_image03.jpg) &nbsp;&nbsp;
