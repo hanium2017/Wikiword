@@ -29,7 +29,7 @@
 
 ## Install
 
-### 1. 디렉토리 복제 후 모듈 설치
+### 1. 프로젝트 clone 후 node dependency 설치 ( [Node.js](https://nodejs.org/en/) 설치가 반드시 되어 있어야 한다. )
 ```
  git clone https://github.com/hanium2017/Wikiword.github.com
  cd Wikiword
