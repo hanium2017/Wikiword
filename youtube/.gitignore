@@ -1,0 +1,4 @@
+node_modules/
+wikiword.json
+key.json
+npm-debug.log

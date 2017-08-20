@@ -8,7 +8,7 @@ const client = require('cheerio-httpcli'),
 app.use(cors)
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/image', function(request, response) {
+app.get('/google-image', function(request, response) {
     let url = `https://www.google.com/search?q=${encodeURIComponent(request.query.search)}&site=webhp&source=lnms&tbm=isch`,
         pageNum = parseInt(request.query.pageNum)
 

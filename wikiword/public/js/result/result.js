@@ -86,7 +86,7 @@ function template(title, item) {
         case 'wikipedia':
             template = `<div class=wikipedia><wikipedia-description><p>${item.content}</p></wikipedia-description></div>`
             break
-        case 'image':
+        case 'google-image':
             template = `<a href=${item.href} target=_blank><img src='${item.src}'/></a>`
             break
         case 'news':

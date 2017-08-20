@@ -8,7 +8,7 @@ img {
 
 
 
-.image-region {
+.google-image-region {
     display: inline-block;
     /*flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@ img {
     background-color: white;
 }
 
-.image-div {
+.google-image-div {
     background-color: white;
     padding: 20px 0px;
 }
