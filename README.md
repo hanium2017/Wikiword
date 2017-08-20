@@ -36,9 +36,9 @@
  npm install    
 ```
 
-### 2. common 폴더에 있는 wikiword.json 파일에 필요 api_key 및 서버 ip, 포트를 셋팅한다.
+### 2. common 폴더로 이동 후 wikiword.json 파일에 필요 api_key 및 서버 ip, 포트를 셋팅한다.
 ```
- cd common and write wikiword.json
+ cd common
 ```
 
 ### 3. 실행한다.
