@@ -31,19 +31,19 @@
 
 ### 1. 디렉토리 복제 후 모듈 설치
 ```
-    git clone https://github.com/hanium2017/Wikiword.github.com
-    cd Wikiword
-    npm install    
+ git clone https://github.com/hanium2017/Wikiword.github.com
+ cd Wikiword
+ npm install    
 ```
 
 ### 2. common 폴더에 있는 wikiword.json 파일에 필요 api_key 및 서버 ip, 포트를 셋팅한다.
 ```
-    cd common and write wikiword.json
+ cd common and write wikiword.json
 ```
 
 ### 3. 실행한다.
 ```
-  npm start (forever) or npm test (nodemon)
+ npm start (forever) or npm test (nodemon)
 ```
 
 ## 제작자
