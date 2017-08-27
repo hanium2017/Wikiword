@@ -27,10 +27,12 @@
 }
 .youtube-img{
   display: inline-block;
+  max-width: 320px;
+  width: 70vw;
 
 }
 .youtube-img > img{
-
+  width: 100%;
 }
 .youtube-text{
 
