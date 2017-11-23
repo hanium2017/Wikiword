@@ -93,19 +93,20 @@ function template(title, item) {
             template = `<div class=news><a class=news-title href=${item.link} target=_blank>${item.title}</a><news-description>${item.description}</news-description><news-date>${newDateForm(now - new Date(item.pubDate).getTime())}</news-date></div>`
             break
         case 'book':
-            template = `<div class=book><img src=${item.image}/><div class=book-text><a class=book-title href=${item.link} target=_blank>${item.title}</a><book-description>${item.description}</book-description><book-date>${item.pubdate.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3').replace(/-/g, '-')}</book-date></div></div>`
+            template = `<div class=book><img src=${item.image} /><div class=book-text><a class=book-title href=${item.link} target=_blank>${item.title}</a><book-description>${item.description}</book-description><book-date>${item.pubdate.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3').replace(/-/g, '-')}</book-date></div></div>`
             break
         case 'youtube':
             template = `<div class=youtube><a class=youtube-img href='https://www.youtube.com/watch?v=${item.video_id}' target=_blank><img src='${item.thumbnail}'/></a><div class=youtube-text><a class=youtube-title href='https://www.youtube.com/watch?v=${item.video_id}' target=_blank>${item.title}</a><div><youtube-date>${newDateForm(now - new Date(item.pubDate).getTime())}</youtube-date><youtube-viewCount> · 조회수 :  ${item.viewCount}</youtube-viewCount></div><div><youtube-channelTitle>게시자 :  ${item.channelTitle}</youtube-channelTitle></div><div><youtube-description> ${item.description}</youtube-description></div></div></div>`
             break
         case 'twitter':
-            template = `<div class=twitter><a class=twitter-img ${setHref(item.url)} target=_blank}><img src=${item.profile_image_url}/></a><div class=twitter-text><a class=twitter-img ${setHref(item.url)} target=_blank}><twitter-text>${item.text}</twitter-text></a><twitter-name>${item.name}</twitter-name><twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date></div></div>`
+            template = `<div class=twitter><a class=twitter-img ${setHref(item.url)} target=_blank><img src=${item.profile_image_url} /></a><div class=twitter-text><a class=twitter-img ${setHref(item.url)} target=_blank><twitter-text>${item.text}</twitter-text></a><twitter-name>${item.name}</twitter-name><twitter-date>${newDateForm(now - new Date(item.pubDate).getTime())}</twitter-date></div></div>`
             break
         default:
             template = `<div class=dbpia><a class=dbpia-title href=${item.link_url}target=_blank>${item.title}</a><dbpia-authors>${item.authors}</dbpia-authors><dbpia-pages>${undefinedCheck(item.publisher)} ${undefinedCheck(item.publication)} ${undefinedCheck(item.pubDate)} ${undefinedCheck(item.pages)}</dbpia-pages>`
     }
     return template
 }
+
 
 
 /* 트위터 링크 존재 여부 판단 함수 */
